@@ -62,6 +62,9 @@ public class DashboardPage {
 	@FindBy(xpath="(//a[@href='https://groceryapp.uniqassosiates.com/admin/list-page'])[1]")
 	WebElement managePages;
 	
+	@FindBy(xpath="//a[@href='https://groceryapp.uniqassosiates.com/admin/list-footertext']")
+	WebElement manageFooter;
+	
 	public void clickAdmin() {
 		admin.click();
 	}
@@ -116,6 +119,10 @@ public class DashboardPage {
 	
 	public void clickManagePages() {
 		managePages.click();
+	}
+	
+	public void clickManageFooter() {
+		manageFooter.click();
 	}
 
 }
