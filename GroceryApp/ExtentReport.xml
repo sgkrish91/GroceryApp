@@ -3,6 +3,7 @@
 		<listener class-name="utilities.ExtentReportUtils" />
 	</listeners>
 	<test name="My Test">
+		<parameter name="browser" value="Chrome"></parameter>
 		<classes>
 			<class name="testCases.ManageContentPageTestCases" />
 		</classes>
