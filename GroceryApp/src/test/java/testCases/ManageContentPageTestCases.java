@@ -2,8 +2,10 @@ package testCases;
 
 import java.io.IOException;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import constant.Constant;
 import elementRepository.DashboardPage;
 import elementRepository.LoginPage;
 import elementRepository.ManageContentPage;
@@ -29,6 +31,12 @@ public class ManageContentPageTestCases extends BaseClass {
 	  mc.editPageDetails();
 	  mc.clickUpdate();
 	  String actualResult=mc.getTextOfAlert();
-	  System.out.println(actualResult);
+	  String expectedResult="×\n"
+	  		+ "Alert!\n"
+	  		+ "Page Updated Successfully";
+	  Assert.assertEquals(actualResult, expectedResult, Constant.ALERTERROR);
+	  String actualResult1=mc.verifyUpdatedValue();
+	  String expectedResult1="NewPage150";
+	  Assert.assertEquals(actualResult1, expectedResult, Constant.UPDATEDATAERROR);
   }
 }

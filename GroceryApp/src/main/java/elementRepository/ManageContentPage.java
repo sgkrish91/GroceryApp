@@ -52,5 +52,14 @@ public class ManageContentPage {
 	public String getTextOfAlert() {
 		return gu.getElementText(alert);
 	}
+	
+	public String verifyUpdatedValue() {
+		int index=0;
+		String locator=null;
+		index=gu.getTableLocatorValue(listPagesTable, "SampleData");
+		locator="//table[@class='table table-bordered table-hover table-sm']//tbody//tr["+(index+1)+"]//td[4]";
+		WebElement updatedPage=driver.findElement(By.xpath(locator));
+		return updatedPage.getText();
+	}
 
 }

@@ -17,5 +17,6 @@ public class Constant {
 	public static final String USERNAMEERROR="Username field is not selected";
 	public static final String ELEMENTPRESENCEERROR="Element is not present";
 	public static final String ERRORINDELIVERYCHARGE="Delivery Charge is not same across the State";
+	public static final String UPDATEDATAERROR="Updated data is not reflected correctly";
 
 }
