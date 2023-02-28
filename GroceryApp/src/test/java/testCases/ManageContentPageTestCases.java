@@ -37,6 +37,6 @@ public class ManageContentPageTestCases extends BaseClass {
 	  Assert.assertEquals(actualResult, expectedResult, Constant.ALERTERROR);
 	  String actualResult1=mc.verifyUpdatedValue();
 	  String expectedResult1="NewPage150";
-	  Assert.assertEquals(actualResult1, expectedResult, Constant.UPDATEDATAERROR);
+	  Assert.assertEquals(actualResult1, expectedResult1, Constant.UPDATEDATAERROR);
   }
 }
