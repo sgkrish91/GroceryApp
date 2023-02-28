@@ -96,5 +96,9 @@ public class GeneralUtilities {
 	    obj.delay(500);
 	}
 	
+	public void clearTextFieldAndEnterNewData(WebElement element, String data) {
+		element.clear();
+		element.sendKeys(data);
+	}
 
 }

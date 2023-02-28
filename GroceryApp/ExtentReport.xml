@@ -4,7 +4,7 @@
 	</listeners>
 	<test name="My Test">
 		<classes>
-			<class name="testCases.LoginPageTestCases" />
+			<class name="testCases.ManageContentPageTestCases" />
 		</classes>
 	</test>
 </suite>
