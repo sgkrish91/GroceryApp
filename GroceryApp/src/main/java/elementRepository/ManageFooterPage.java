@@ -8,12 +8,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import utilities.ExplicitWait;
 import utilities.GeneralUtilities;
 
 public class ManageFooterPage {
 	
 	WebDriver driver;
 	GeneralUtilities gu=new GeneralUtilities();
+	ExplicitWait ew=new ExplicitWait();
 	
 	public ManageFooterPage(WebDriver driver) {
 		this.driver=driver;
@@ -23,7 +25,7 @@ public class ManageFooterPage {
 	@FindBy(xpath="//table[@class='table table-bordered table-hover table-sm']//tbody//tr//td[4]")
 	List<WebElement> footerTable;
 	
-	@FindBy(xpath="(//a[@href='https://groceryapp.uniqassosiates.com/admin/list-footertext'])[2]")
+	@FindBy(xpath="//a[@class='btn btn-default btn-fix']")
 	WebElement reset;
 	
 	@FindBy(xpath="(//div[@class='col-sm-6'])[1]")
@@ -33,7 +35,7 @@ public class ManageFooterPage {
 		int index=0;
 		String locator=null;
 		index=gu.getTableLocatorValue(footerTable, "varkala");
-		locator="//table[@class='table table-bordered table-hover table-sm']//tbody//tr["+(index+1)+"]//td[4]";
+		locator="//table[@class='table table-bordered table-hover table-sm']//tbody//tr["+(index+1)+"]//td[4]//a";
 		WebElement edit=driver.findElement(By.xpath(locator));
 		edit.click();
 	}
