@@ -26,7 +26,7 @@ public class LoginPageTestCases extends BaseClass {//inheritance. We add the Bef
 	  Assert.assertEquals(actualResult, expectedResult, Constant.SIGNINBUTTONERROR);
   }
   
-  @Test(groups = {"High"} )
+  @Test(groups = {"High"})
   public void verifyWhetherRememberMeCheckboxIsSelected() {
 	  lp=new LoginPage(driver);
 	  boolean actualResult=lp.isRemembermeSelected();
@@ -48,11 +48,11 @@ public class LoginPageTestCases extends BaseClass {//inheritance. We add the Bef
 	  Assert.assertEquals(actualResult1, expectedResult1, Constant.LOGINERROR);
   }
   
-  @Test(groups = {"Critical"} )
-  public void verifyTheErrorMessageWhenLoginUsingInvalidCredentials() {
+  @Test(dataProvider ="dataProvider",dataProviderClass = DataProviderTest.class)
+  public void verifyTheErrorMessageWhenLoginUsingInvalidCredentials(String user, String pass) {
 	  lp=new LoginPage(driver);
-	  lp.enterUsername("hari");
-	  lp.enterPassword("12345");
+	  lp.enterUsername(user);
+	  lp.enterPassword(pass);
 	  lp.clickSignIn();
 	  String actualResult=lp.getErrorMessage();
 	  String expectedResult="×\n"
@@ -69,7 +69,7 @@ public class LoginPageTestCases extends BaseClass {//inheritance. We add the Bef
 	  Assert.assertEquals(actualResult, expectedResult, Constant.LOGINTITLE);
   }
   
-  @Test(groups = {"High"} )
+  @Test(groups = {"High"})
   public void verifyTheBackgroundColorOfSignInButton() {
 	  lp=new LoginPage(driver);
 	  String actualResult=lp.getSignInBackgroundColor();

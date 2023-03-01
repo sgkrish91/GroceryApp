@@ -12,12 +12,14 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import utilities.ExcelRead;
+import utilities.ExplicitWait;
 import utilities.GeneralUtilities;
 
 public class LoginPage {
 	
 	WebDriver driver;
 	GeneralUtilities gu=new GeneralUtilities();
+	ExplicitWait ew=new ExplicitWait();
 	
 	public LoginPage(WebDriver driver) {
 		this.driver=driver;
