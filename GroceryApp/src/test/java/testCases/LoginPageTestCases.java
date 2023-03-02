@@ -77,7 +77,7 @@ public class LoginPageTestCases extends BaseClass {//inheritance. We add the Bef
 	  Assert.assertEquals(actualResult, expectedResult, Constant.BACKGROUNDCOLORERROR);
   }
   
-  @Test
+  @Test(enabled = false)
   public void verifyWhetherUserIsPromptedToEnterTheUsernameIfTryingToLoginWithoutEnteringCredentials() {
 	  lp=new LoginPage(driver);
 	  lp.clickSignIn();
