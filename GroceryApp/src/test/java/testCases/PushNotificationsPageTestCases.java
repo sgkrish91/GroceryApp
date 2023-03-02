@@ -52,3 +52,4 @@ public class PushNotificationsPageTestCases extends BaseClass{
 	  Assert.assertEquals(actualResult, expectedResult, Constant.EXPECTEDTEXTERROR);
   }
 }
+//Test

@@ -5,7 +5,7 @@
 	<test name="ChromeTest">
 		<parameter name="browser" value="Chrome"></parameter>
 		<classes>
-			<class name="testCases.LoginPageTestCases"></class> 
+			<class name="testCases.ManageFooterPageTestCases"></class> 
 		</classes>
 	</test>
 </suite>
