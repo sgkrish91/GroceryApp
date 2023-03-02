@@ -46,9 +46,7 @@ public class AdminUsersTestCases extends BaseClass {
 		dp = new DashboardPage(driver);
 		dp.clickAdminUsers();
 		au = new AdminUsersPage(driver);
-		String locator = au.getLocator();
-		WebElement statusDetails = driver.findElement(By.xpath(locator));
-		String actualResult = statusDetails.getText();
+		String actualResult = au.getLocator();
 		String expectedResult = "Active";
 		Assert.assertEquals(actualResult, expectedResult, Constant.TABLESEARCHERROR);
 

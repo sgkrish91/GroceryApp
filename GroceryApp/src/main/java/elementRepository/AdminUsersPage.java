@@ -58,7 +58,8 @@ public class AdminUsersPage {
 	public String getLocator() {
 		int index=gu.getTableLocatorValue(status, "hari");
 		String locator="//table[@class='table table-bordered table-hover table-sm']//tbody//tr["+(index+1)+"]//td[3]//a//span";
-		return locator;
+		WebElement statusDetails = driver.findElement(By.xpath(locator));
+		return gu.getElementText(statusDetails);
 	}
 	
 	public void getLocatorForStatusChange() {
