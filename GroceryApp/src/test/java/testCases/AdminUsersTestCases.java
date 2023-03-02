@@ -65,7 +65,9 @@ public class AdminUsersTestCases extends BaseClass {
 		au = new AdminUsersPage(driver);
 		au.getLocatorForStatusChange();
 		String actualResult = au.getTextOfAlert();
-		String expectedResult = "×\n" + "Alert!\n" + "User Status Changed Successfully";
+		String expectedResult = "×\n"
+				+ "Alert!\n"
+				+ "User Status Changed Successfully";
 		Assert.assertEquals(actualResult, expectedResult, Constant.ALERTERROR);
 	}
 
