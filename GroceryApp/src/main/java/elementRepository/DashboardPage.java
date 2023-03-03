@@ -68,6 +68,9 @@ public class DashboardPage {
 	@FindBy(xpath="//a[@href='https://groceryapp.uniqassosiates.com/admin/list-notifications']")
 	WebElement pushNot;
 	
+	@FindBy(xpath="(//a[@href='https://groceryapp.uniqassosiates.com/admin/list-deliveryboy'])[1]")
+	WebElement manageDeliveryBoy;
+	
 	public void clickAdmin() {
 		admin.click();
 	}
@@ -130,6 +133,10 @@ public class DashboardPage {
 	
 	public void clickPushNotification() {
 		pushNot.click();
+	}
+	
+	public void clickManageDeliveryBoy() {
+		manageDeliveryBoy.click();
 	}
 
 }
