@@ -30,4 +30,21 @@ public class ManageDeliverBoyPageTestCases extends BaseClass {
 	  String expectedResult="Tristan";
 	  Assert.assertEquals(actualResult, expectedResult, Constant.EXPECTEDTEXTERROR);
   }
+  
+  @Test
+  public void verifyTheFunctionalityOfResetButton() throws IOException {
+	  lp=new LoginPage(driver);
+	  lp.enterUsername(ExcelRead.readStringData("Sheet1", 1, 0));
+	  lp.enterPassword(ExcelRead.readStringData("Sheet1", 1, 1));
+	  lp.clickSignIn();
+	  dp=new DashboardPage(driver);
+	  dp.clickManageDeliveryBoy();
+	  md=new ManageDeliveryBoyPage(driver);
+	  md.clickSearch();
+	  md.enterUsername();
+	  md.clickReset();
+	  boolean actualResult=md.presenceOfUsername();
+	  boolean expectedResult=false;
+	  Assert.assertEquals(actualResult, expectedResult, Constant.ELEMENTPRESENCEERROR);
+  }
 }

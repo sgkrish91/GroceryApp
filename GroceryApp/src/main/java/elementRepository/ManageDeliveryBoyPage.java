@@ -23,11 +23,36 @@ public class ManageDeliveryBoyPage {
 	@FindBy(xpath="//table[@class='table table-bordered table-hover table-sm']//tbody//tr//td[4]")
 	List<WebElement> listDeliveryBoy;
 	
+	@FindBy(xpath="//a[@onclick='click_button(2)']")
+	WebElement search;
+	
+	@FindBy(id="un")
+	WebElement username;
+	
+	@FindBy(xpath="(//a[@href='https://groceryapp.uniqassosiates.com/admin/list-deliveryboy'])[2]")
+	WebElement reset;
+	
 	public String getTextOfUsername() {
 		int index=gu.getTableLocatorValue(listDeliveryBoy, "Trudie");
 		String locator="//table[@class='table table-bordered table-hover table-sm']//tbody//tr["+(index+4)+"]//td[5]";
 		WebElement username=driver.findElement(By.xpath(locator));
 		return gu.getElementText(username);
+	}
+	
+	public void clickSearch() {
+		search.click();
+	}
+	
+	public void enterUsername() {
+		username.sendKeys("Trudie");
+	}
+	
+	public void clickReset() {
+		reset.click();
+	}
+	
+	public boolean presenceOfUsername() {
+		return username.isDisplayed();
 	}
 
 }

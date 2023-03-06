@@ -100,5 +100,10 @@ public class GeneralUtilities {
 		element.clear();
 		element.sendKeys(data);
 	}
+	
+	public void presenceOfElement(WebElement element) {
+		boolean value;
+		
+	}
 
 }
