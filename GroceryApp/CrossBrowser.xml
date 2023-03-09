@@ -1,7 +1,4 @@
 <suite name="MyTestSuite">
-	<listeners>
-		<listener class-name="utilities.ExtentReportUtils" />
-	</listeners>
 	<test name="ChromeTest">
 		<parameter name="browser" value="Chrome"></parameter>
 		<classes>
