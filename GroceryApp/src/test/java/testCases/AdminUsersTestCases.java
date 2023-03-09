@@ -68,5 +68,26 @@ public class AdminUsersTestCases extends BaseClass {
 				+ "User Status Changed Successfully";
 		Assert.assertEquals(actualResult, expectedResult, Constant.ALERTERROR);
 	}
+	
+	@Test
+	public void verifyAlertMessageWhenNewUserIsAdded() {
+		lp = new LoginPage(driver);
+		lp.enterUsername(Constant.LOGINUSER);
+		lp.enterPassword(Constant.LOGINPASSWORD);
+		lp.clickSignIn();
+		dp = new DashboardPage(driver);
+		dp.clickAdminUsers();
+		au = new AdminUsersPage(driver);
+		au.clickNew();
+		au.enterUsername("hari");
+		au.enterPassword("abc123");
+		au.selectUser();
+		au.clickSave();
+		String actualResult=au.getAlertText();
+		String expectedResult="x\n"
+				+"Alert!\n"
+				+"User Created Successfully";
+		Assert.assertEquals(actualResult, expectedResult, Constant.ALERTERROR);
+	}
 
 }

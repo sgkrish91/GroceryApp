@@ -10,11 +10,13 @@ import org.openqa.selenium.support.PageFactory;
 
 import dev.failsafe.internal.util.Assert;
 import utilities.GeneralUtilities;
+import utilities.RandomDataGenerator;
 
 public class AdminUsersPage {
 	
 	WebDriver driver;
 	GeneralUtilities gu=new GeneralUtilities();
+	RandomDataGenerator rd=new RandomDataGenerator();
 	
 	public AdminUsersPage(WebDriver driver) {
 		this.driver=driver;
@@ -38,6 +40,21 @@ public class AdminUsersPage {
 	
 	@FindBy(xpath="//div[@class='alert alert-success alert-dismissible']")
 	WebElement alert;
+	
+	@FindBy(id="username")
+	WebElement username;
+	
+	@FindBy(id="password")
+	WebElement password;
+	
+	@FindBy(xpath="//a[@class='btn btn-rounded btn-danger']")
+	WebElement newButton;
+	
+	@FindBy(id="user_type")
+	WebElement userTypeDrop;
+	
+	@FindBy(xpath="//button[@name='Create']")
+	WebElement saveButton;
 	
 	public void clickSearch() {
 		search.click();
@@ -74,5 +91,29 @@ public class AdminUsersPage {
 		
 	}
 	
+	public void enterUsername(String user) {
+		String randomString=rd.randomPassword();
+		username.sendKeys(user+randomString);
+	}
+	
+	public void enterPassword(String pass) {
+		password.sendKeys(pass);
+	}
+	
+	public void clickNew() {
+		newButton.click();
+	}
+	
+	public void selectUser() {
+		gu.selectValueFromDropDown(userTypeDrop, "admin");
+	}
+	
+	public void clickSave() {
+		saveButton.click();
+	}
+	
+	public String getAlertText() {
+		return gu.getElementText(alert);
+	}
 
 }
