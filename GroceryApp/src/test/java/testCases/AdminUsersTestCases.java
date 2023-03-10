@@ -84,9 +84,9 @@ public class AdminUsersTestCases extends BaseClass {
 		au.selectUser();
 		au.clickSave();
 		String actualResult=au.getAlertText();
-		String expectedResult="x\n"
-				+"Alert!\n"
-				+"User Created Successfully";
+		String expectedResult="×\n"
+				+ "Alert!\n"
+				+ "User Created Successfully";
 		Assert.assertEquals(actualResult, expectedResult, Constant.ALERTERROR);
 	}
 

@@ -5,12 +5,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import utilities.ExplicitWait;
 import utilities.GeneralUtilities;
 
 public class DashboardPage {
 	
 	WebDriver driver;
 	GeneralUtilities gu=new GeneralUtilities();
+	ExplicitWait ew=new ExplicitWait();
 	
 	public DashboardPage(WebDriver driver) {
 		this.driver=driver;
@@ -72,6 +74,7 @@ public class DashboardPage {
 	WebElement manageDeliveryBoy;
 	
 	public void clickAdmin() {
+		ew.presenceOfElementExplicitWait(driver, "//a[@data-toggle='dropdown']");
 		admin.click();
 	}
 	
@@ -96,6 +99,7 @@ public class DashboardPage {
 	}
 	
 	public void clickAdminUsers() {
+		
 		adminUsers.click();
 	}
 	
