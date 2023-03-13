@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import constant.AdminUusersConstant;
 import constant.Constant;
 import elementRepository.AdminUsersPage;
 import elementRepository.DashboardPage;
@@ -47,7 +48,7 @@ public class AdminUsersTestCases extends BaseClass {
 		dp.clickAdminUsers();
 		au = new AdminUsersPage(driver);
 		String actualResult = au.getLocator();
-		String expectedResult = "Active";
+		String expectedResult = AdminUusersConstant.STATUSACTIVE;
 		Assert.assertEquals(actualResult, expectedResult, Constant.TABLESEARCHERROR);
 
 	}
@@ -63,9 +64,7 @@ public class AdminUsersTestCases extends BaseClass {
 		au = new AdminUsersPage(driver);
 		au.getLocatorForStatusChange();
 		String actualResult = au.getTextOfAlert();
-		String expectedResult = "×\n"
-				+ "Alert!\n"
-				+ "User Status Changed Successfully";
+		String expectedResult = AdminUusersConstant.ALERTEXPECTEDRESULT;
 		Assert.assertEquals(actualResult, expectedResult, Constant.ALERTERROR);
 	}
 	
@@ -84,9 +83,7 @@ public class AdminUsersTestCases extends BaseClass {
 		au.selectUser();
 		au.clickSave();
 		String actualResult=au.getAlertText();
-		String expectedResult="×\n"
-				+ "Alert!\n"
-				+ "User Created Successfully";
+		String expectedResult=AdminUusersConstant.ALERTNEWUSERADDED;
 		Assert.assertEquals(actualResult, expectedResult, Constant.ALERTERROR);
 	}
 

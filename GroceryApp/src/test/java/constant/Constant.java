@@ -19,5 +19,7 @@ public class Constant {
 	public static final String ERRORINDELIVERYCHARGE="Delivery Charge is not same across the State";
 	public static final String UPDATEDATAERROR="Updated data is not reflected correctly";
 	public static final String EXPECTEDTEXTERROR="Expected text is not present in the element";
+	
+	
 
 }
