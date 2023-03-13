@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import constant.AdminUusersConstant;
+import constant.AdminUsersConstant;
 import constant.Constant;
 import elementRepository.AdminUsersPage;
 import elementRepository.DashboardPage;
@@ -48,7 +48,7 @@ public class AdminUsersTestCases extends BaseClass {
 		dp.clickAdminUsers();
 		au = new AdminUsersPage(driver);
 		String actualResult = au.getLocator();
-		String expectedResult = AdminUusersConstant.STATUSACTIVE;
+		String expectedResult = AdminUsersConstant.STATUSACTIVE;
 		Assert.assertEquals(actualResult, expectedResult, Constant.TABLESEARCHERROR);
 
 	}
@@ -64,7 +64,7 @@ public class AdminUsersTestCases extends BaseClass {
 		au = new AdminUsersPage(driver);
 		au.getLocatorForStatusChange();
 		String actualResult = au.getTextOfAlert();
-		String expectedResult = AdminUusersConstant.ALERTEXPECTEDRESULT;
+		String expectedResult = AdminUsersConstant.ALERTEXPECTEDRESULT;
 		Assert.assertEquals(actualResult, expectedResult, Constant.ALERTERROR);
 	}
 	
@@ -78,12 +78,12 @@ public class AdminUsersTestCases extends BaseClass {
 		dp.clickAdminUsers();
 		au = new AdminUsersPage(driver);
 		au.clickNew();
-		au.enterUsername("hari");
-		au.enterPassword("abc123");
+		au.enterUsername(AdminUsersConstant.RANDOMUSER);
+		au.enterPassword(AdminUsersConstant.RANDOMPASS);
 		au.selectUser();
 		au.clickSave();
 		String actualResult=au.getAlertText();
-		String expectedResult=AdminUusersConstant.ALERTNEWUSERADDED;
+		String expectedResult=AdminUsersConstant.ALERTNEWUSERADDED;
 		Assert.assertEquals(actualResult, expectedResult, Constant.ALERTERROR);
 	}
 

@@ -1,6 +1,6 @@
 package constant;
 
-public class AdminUusersConstant {
+public class AdminUsersConstant {
 	
 	public static final String STATUSACTIVE="Active";
 	public static final String ALERTEXPECTEDRESULT="×\n"
@@ -9,5 +9,7 @@ public class AdminUusersConstant {
 	public static final String ALERTNEWUSERADDED="×\n"
 			+ "Alert!\n"
 			+ "User Created Successfully";
+	public static final String RANDOMUSER="hari";
+	public static final String RANDOMPASS="abc1234";
 
 }
