@@ -7,7 +7,9 @@ import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -35,7 +37,11 @@ public class BaseClass {
 	  public void beforeMethod(String browserName) throws IOException {
 		  testBasic();
 		  if(browserName.equals("Chrome")) {
+			  System.setProperty("webdriver.chrome.driver", "D:\\chromedriver_win32 (1)\\chromedriver.exe\\");
+			  System.setProperty("webdriver.http.factory", "jdk-http-client");
 			  driver=new ChromeDriver();
+			  ChromeOptions ops = new ChromeOptions();
+			  ops.addArguments("--remote-allow-origins=*");
 		  }
 		  else if(browserName.equals("Edge")) {
 			  driver=new EdgeDriver();
