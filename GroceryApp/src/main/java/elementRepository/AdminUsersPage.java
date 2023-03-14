@@ -24,37 +24,37 @@ public class AdminUsersPage {
 	}
 	
 	@FindBy(xpath="//i[@class=' fa fa-search']")
-	WebElement search;
+	private WebElement search;
 	
 	@FindBy(xpath="//select[@id='ut']")
-	WebElement userType;
+	private WebElement userType;
 	
 	@FindBy(xpath="//button[@name='Search']")
-	WebElement searchList;
+	private WebElement searchList;
 	
 	@FindBy(xpath="//table[@class='table table-bordered table-hover table-sm']//tbody//tr//td[2]")
-	List<WebElement> adminUsersTable;
+	private List<WebElement> adminUsersTable;
 	
 	@FindBy(xpath="//table[@class='table table-bordered table-hover table-sm']//tbody//tr//td[1]")
-	List<WebElement> status;
+	private List<WebElement> status;
 	
 	@FindBy(xpath="//div[@class='alert alert-success alert-dismissible']")
-	WebElement alert;
+	private WebElement alert;
 	
 	@FindBy(id="username")
-	WebElement username;
+	private WebElement username;
 	
 	@FindBy(id="password")
-	WebElement password;
+	private WebElement password;
 	
 	@FindBy(xpath="//a[@class='btn btn-rounded btn-danger']")
-	WebElement newButton;
+	private WebElement newButton;
 	
 	@FindBy(id="user_type")
-	WebElement userTypeDrop;
+	private WebElement userTypeDrop;
 	
 	@FindBy(xpath="//button[@name='Create']")
-	WebElement saveButton;
+	private WebElement saveButton;
 	
 	public void clickSearch() {
 		search.click();

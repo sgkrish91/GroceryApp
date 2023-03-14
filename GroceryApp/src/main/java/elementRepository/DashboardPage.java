@@ -20,58 +20,58 @@ public class DashboardPage {
 	}
 	
 	@FindBy(xpath="//a[@data-toggle='dropdown']")
-	WebElement admin;
+	private WebElement admin;
 	
 	@FindBy(xpath="//i[@class='ace-icon fa fa-power-off']")
-	WebElement logout;
+	private WebElement logout;
 	
 	@FindBy(xpath="//i[@class='nav-icon fas fa-money-bill-alt']")
-	WebElement manageExpense;
+	private WebElement manageExpense;
 	
 	@FindBy(xpath="//ul[@class='nav nav-treeview']//li//a[@href='https://groceryapp.uniqassosiates.com/admin/expense-category']")
-	WebElement expCategory;
+	private WebElement expCategory;
 	
 	@FindBy(xpath="//h1[@class='m-0 text-dark']")
-	WebElement expCategoryTitle;
+	private WebElement expCategoryTitle;
 	
 	@FindBy(xpath="//i[@class='nav-icon fas fa-tasks']")
-	WebElement manageProduct;
+	private WebElement manageProduct;
 	
 	@FindBy(xpath="//i[@class='nav-icon fas fa-users']")
-	WebElement adminUsers;
+	private WebElement adminUsers;
 	
 	@FindBy(xpath="//i[@class='nav-icon fas fa-edit']")
-	WebElement manageContent;
+	private WebElement manageContent;
 	
 	@FindBy(xpath="//i[@class='nav-icon fas fa-list-alt']")
-	WebElement manageCategory;
+	private WebElement manageCategory;
 	
 	@FindBy(xpath="//a[@href='https://groceryapp.uniqassosiates.com/admin/list-category']//i")
-	WebElement category;
+	private WebElement category;
 	
 	@FindBy(xpath="//a[@href='https://groceryapp.uniqassosiates.com/admin/list-sub-category']//i")
-	WebElement subCategory;
+	private WebElement subCategory;
 	
 	@FindBy(xpath="//i[@class='nav-icon fas fa-credit-card']")
-	WebElement managePaymentMethod;
+	private WebElement managePaymentMethod;
 	
 	@FindBy(xpath="(//a[@href='https://groceryapp.uniqassosiates.com/admin/list-mobileslider'])[1]")
-	WebElement mobileSlider;
+	private WebElement mobileSlider;
 	
 	@FindBy(xpath="(//a[@href='https://groceryapp.uniqassosiates.com/admin/list-location'])[1]")
-	WebElement manageLocation;
+	private WebElement manageLocation;
 	
 	@FindBy(xpath="(//a[@href='https://groceryapp.uniqassosiates.com/admin/list-page'])[1]")
-	WebElement managePages;
+	private WebElement managePages;
 	
 	@FindBy(xpath="//a[@href='https://groceryapp.uniqassosiates.com/admin/list-footertext']")
-	WebElement manageFooter;
+	private WebElement manageFooter;
 	
 	@FindBy(xpath="//a[@href='https://groceryapp.uniqassosiates.com/admin/list-notifications']")
-	WebElement pushNot;
+	private WebElement pushNot;
 	
 	@FindBy(xpath="(//a[@href='https://groceryapp.uniqassosiates.com/admin/list-deliveryboy'])[1]")
-	WebElement manageDeliveryBoy;
+	private WebElement manageDeliveryBoy;
 	
 	public void clickAdmin() {
 		ew.presenceOfElementExplicitWait(driver, "//a[@data-toggle='dropdown']");

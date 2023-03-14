@@ -23,13 +23,13 @@ public class ManageFooterPage {
 	}
 	
 	@FindBy(xpath="//table[@class='table table-bordered table-hover table-sm']//tbody//tr//td[4]")
-	List<WebElement> footerTable;
+	private List<WebElement> footerTable;
 	
 	@FindBy(xpath="//a[@class='btn btn-default btn-fix']")
-	WebElement reset;
+	private WebElement reset;
 	
 	@FindBy(xpath="(//div[@class='col-sm-6'])[1]")
-	WebElement title;
+	private WebElement title;
 	
 	public void clickEdit() {
 		int index=0;

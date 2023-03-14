@@ -21,16 +21,16 @@ public class ManageContentPage {
 	}
 	
 	@FindBy(xpath="//table[@class='table table-bordered table-hover table-sm']//tbody//tr//td[5]")
-	List<WebElement> listPagesTable;
+	private List<WebElement> listPagesTable;
 	
 	@FindBy(id="page")
-	WebElement page;
+	private WebElement page;
 	
 	@FindBy(xpath="//button[@class='btn btn-danger']")
-	WebElement update;
+	private WebElement update;
 	
 	@FindBy(xpath="//div[@class='alert alert-success alert-dismissible']")
-	WebElement alert;
+	private WebElement alert;
 	
 	public void clickEditInTable() {
 		int index=0;

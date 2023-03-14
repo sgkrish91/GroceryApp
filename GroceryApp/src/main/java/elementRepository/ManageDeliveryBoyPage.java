@@ -21,16 +21,16 @@ public class ManageDeliveryBoyPage {
 	}
 	
 	@FindBy(xpath="//table[@class='table table-bordered table-hover table-sm']//tbody//tr//td[4]")
-	List<WebElement> listDeliveryBoy;
+	private List<WebElement> listDeliveryBoy;
 	
 	@FindBy(xpath="//a[@onclick='click_button(2)']")
-	WebElement search;
+	private WebElement search;
 	
 	@FindBy(id="un")
-	WebElement username;
+	private WebElement username;
 	
 	@FindBy(xpath="(//a[@href='https://groceryapp.uniqassosiates.com/admin/list-deliveryboy'])[2]")
-	WebElement reset;
+	private WebElement reset;
 	
 	public String getTextOfUsername() {
 		int index=gu.getTableLocatorValue(listDeliveryBoy, "Trudie");

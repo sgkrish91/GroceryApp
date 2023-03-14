@@ -21,22 +21,22 @@ public class MobileSliderPage {
 	}
 	
 	@FindBy(xpath="//a[@href='https://groceryapp.uniqassosiates.com/admin/Mobileslider/add']")
-	WebElement newButton;
+	private WebElement newButton;
 	
 	@FindBy(id="main_img")
-	WebElement chooseFile;
+	private WebElement chooseFile;
 	
 	@FindBy(xpath="//button[@type='submit']")
-	WebElement save;
+	private WebElement save;
 	
 	@FindBy(xpath="//div[@class='alert alert-success alert-dismissible']")
-	WebElement alert;
+	private WebElement alert;
 	
 	@FindBy(xpath="//table[@class='table table-bordered table-hover table-sm']//tbody//tr[1]//td[1]")
-	WebElement image;
+	private WebElement image;
 	
 	@FindBy(xpath="//a[@href='https://groceryapp.uniqassosiates.com/admin/Mobileslider/delete?del=478&page_ad=1']")
-	WebElement delete;
+	private WebElement delete;
 	
 	public void clickNew() {
 		newButton.click();

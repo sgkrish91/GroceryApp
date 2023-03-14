@@ -24,16 +24,16 @@ public class ManagePaymentMethodsPage {
 	}
 	
 	@FindBy(xpath="//table[@class='table table-bordered table-hover table-sm']//tbody//tr//td[1]")
-	List<WebElement> action;
+	private List<WebElement> action;
 	
 	@FindBy(xpath="//input[@id='limit']")
-	WebElement limit;
+	private WebElement limit;
 	
 	@FindBy(xpath="//button[@class='btn btn-block-sm btn-info']")
-	WebElement update;
+	private WebElement update;
 	
 	@FindBy(xpath="//div[@class='alert alert-success alert-dismissible']")
-	WebElement alert;
+	private WebElement alert;
 	
 	public void clickEditButton() {
 		int index=gu.getTableLocatorValue(action, "UPI");

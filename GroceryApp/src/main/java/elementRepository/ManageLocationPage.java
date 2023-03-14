@@ -20,10 +20,10 @@ public class ManageLocationPage {
 	}
 	
 	@FindBy(xpath="//table[@class='table table-bordered table-hover table-sm']//tbody//tr//td[3]")
-	List<WebElement> state;
+	private List<WebElement> state;
 	
 	@FindBy(xpath="//table[@class='table table-bordered table-hover table-sm']//tbody//tr//td[4]")
-	WebElement deliveryCharge;
+	private WebElement deliveryCharge;
 	
 	public boolean verifyingDeliveryCharge() {
 		return gu.getTableColumnValue(state, "Cabmridge");

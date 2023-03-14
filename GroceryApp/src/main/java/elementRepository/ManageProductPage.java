@@ -23,22 +23,22 @@ public class ManageProductPage {
 	}
 	
 	@FindBy(xpath="//a[@class='btn btn-rounded btn-primary']")
-	WebElement search;
+	private WebElement search;
 	
 	@FindBy(xpath="//input[@placeholder='Title']")
-	WebElement title;
+	private WebElement title;
 	
 	@FindBy(xpath="//select[@id='cat_id']")
-	WebElement category;
+	private WebElement category;
 	
 	@FindBy(id="sb")
-	WebElement subCategory;
+	private WebElement subCategory;
 	
 	@FindBy(xpath="//button[@class='btn btn-danger btn-fix']")
-	WebElement searchList;
+	private WebElement searchList;
 	
 	@FindBy(xpath="//table[@class='table table-bordered table-hover table-sm']//tbody//tr//td[3]")
-	List<WebElement> tableCategory;
+	private List<WebElement> tableCategory;
 	
 	public void clickSearch() {
 		search.click();

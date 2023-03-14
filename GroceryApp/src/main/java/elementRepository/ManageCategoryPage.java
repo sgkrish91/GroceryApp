@@ -22,25 +22,25 @@ public class ManageCategoryPage {
 	}
 	
 	@FindBy(xpath="//a[@class='btn btn-rounded btn-danger']")
-	WebElement newButton;
+	private WebElement newButton;
 	
 	@FindBy(xpath="//select[@class='form-control selectpicker']")
-	WebElement selectCategory;
+	private WebElement selectCategory;
 	
 	@FindBy(id="subcategory")
-	WebElement subCategory;
+	private WebElement subCategory;
 	
 	@FindBy(xpath="//input[@type='file']")
-	WebElement chooseFile;
+	private WebElement chooseFile;
 	
 	@FindBy(xpath="//button[@class='btn btn-danger']")
-	WebElement saveButton;
+	private WebElement saveButton;
 	
 	@FindBy(xpath="//div[@class='alert alert-success alert-dismissible']")
-	WebElement alert;
+	private WebElement alert;
 	
 	@FindBy(xpath="//table[@class='table table-bordered table-hover table-sm']//tr//td[1]")
-	List<WebElement> listSubCategory;
+	private List<WebElement> listSubCategory;
 	
 	public void clickNewButton() {
 		newButton.click();

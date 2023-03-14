@@ -18,19 +18,19 @@ public class PushNotificationsPage {
 	}
 	
 	@FindBy(id="title")
-	WebElement title;
+	private WebElement title;
 	
 	@FindBy(id="description")
-	WebElement description;
+	private WebElement description;
 	
 	@FindBy(xpath="//button[@class='btn btn-block-sm btn-info']")
-	WebElement send;
+	private WebElement send;
 	
 	@FindBy(xpath="(//a[@href='https://groceryapp.uniqassosiates.com/admin/list-notifications'])[2]")
-	WebElement reset;
+	private WebElement reset;
 	
 	@FindBy(xpath="//div[@class='alert alert-success alert-dismissible']")
-	WebElement alert;
+	private WebElement alert;
 	
 	public void enterTitle() {
 		title.sendKeys("Hello");

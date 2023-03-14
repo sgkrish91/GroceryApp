@@ -27,25 +27,25 @@ public class LoginPage {
 	}
 	
 	@FindBy(xpath="//button[@type='submit']")
-	WebElement signInButton;
+	private WebElement signInButton;
 	
 	@FindBy(xpath="//input[@type='checkbox']")
-	WebElement rememberMe;
+	private WebElement rememberMe;
 	
 	@FindBy(xpath="//input[@type='text']")
-	WebElement username;
+	private WebElement username;
 	
 	@FindBy(xpath="//input[@type='password']")
-	WebElement password;
+	private WebElement password;
 	
 	@FindBy(xpath="//div[@class='alert alert-danger alert-dismissible']")
-	WebElement error;
+	private WebElement error;
 	
 	@FindBy(xpath="//a[@href='https://groceryapp.uniqassosiates.com/admin/login']")
-	WebElement title;
+	private WebElement title;
 	
 	@FindBy(xpath="//a[@class='nav-link']//img")
-	WebElement admin;
+	private WebElement admin;
 	
 	
 	
