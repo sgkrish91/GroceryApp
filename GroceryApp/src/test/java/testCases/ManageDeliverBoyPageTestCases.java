@@ -20,8 +20,8 @@ public class ManageDeliverBoyPageTestCases extends BaseClass {
   @Test
   public void verifyTheUsernameOfADeliverBoy() throws IOException {
 	  lp=new LoginPage(driver);
-	  lp.enterUsername(ExcelRead.readStringData("Sheet1", 1, 0));
-	  lp.enterPassword(ExcelRead.readStringData("Sheet1", 1, 1));
+	  lp.enterUsername(ExcelRead.readStringData(prop.getProperty("LoginExcel"), "Sheet1", 1, 0));
+	  lp.enterPassword(ExcelRead.readStringData(prop.getProperty("LoginExcel"), "Sheet1", 1, 1));
 	  lp.clickSignIn();
 	  dp=new DashboardPage(driver);
 	  dp.clickManageDeliveryBoy();
@@ -33,9 +33,10 @@ public class ManageDeliverBoyPageTestCases extends BaseClass {
   
   @Test
   public void verifyTheFunctionalityOfResetButton() throws IOException {
+	  testBasic();
 	  lp=new LoginPage(driver);
-	  lp.enterUsername(ExcelRead.readStringData("Sheet1", 1, 0));
-	  lp.enterPassword(ExcelRead.readStringData("Sheet1", 1, 1));
+	  lp.enterUsername(ExcelRead.readStringData(prop.getProperty("LoginExcel"), "Sheet1", 1, 0));
+	  lp.enterPassword(ExcelRead.readStringData(prop.getProperty("LoginExcel"), "Sheet1", 1, 1));
 	  lp.clickSignIn();
 	  dp=new DashboardPage(driver);
 	  dp.clickManageDeliveryBoy();

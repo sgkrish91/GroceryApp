@@ -19,9 +19,10 @@ public class PushNotificationsPageTestCases extends BaseClass{
 	
   @Test
   public void verifyWhetherUserIsAbleToSendPushNotifications() throws IOException {
+	  testBasic();
 	  lp=new LoginPage(driver);
-	  lp.enterUsername(ExcelRead.readStringData("Sheet1", 1, 0));
-	  lp.enterPassword(ExcelRead.readStringData("Sheet1", 1, 1));
+	  lp.enterUsername(ExcelRead.readStringData(prop.getProperty("LoginExcel"), "Sheet1", 1, 0));
+	  lp.enterPassword(ExcelRead.readStringData(prop.getProperty("LoginExcel"), "Sheet1", 1, 1));
 	  lp.clickSignIn();
 	  dp=new DashboardPage(driver);
 	  dp.clickPushNotification();
@@ -38,9 +39,10 @@ public class PushNotificationsPageTestCases extends BaseClass{
   
   @Test
   public void verifyWhetherUserIsAbleToClearTheDataEnteredInTitleTextboxWhileClickingResetButton() throws IOException {
+	  testBasic();
 	  lp=new LoginPage(driver);
-	  lp.enterUsername(ExcelRead.readStringData("Sheet1", 1, 0));
-	  lp.enterPassword(ExcelRead.readStringData("Sheet1", 1, 1));
+	  lp.enterUsername(ExcelRead.readStringData(prop.getProperty("LoginExcel"), "Sheet1", 1, 0));
+	  lp.enterPassword(ExcelRead.readStringData(prop.getProperty("LoginExcel"), "Sheet1", 1, 1));
 	  lp.clickSignIn();
 	  dp=new DashboardPage(driver);
 	  dp.clickPushNotification();
@@ -52,4 +54,3 @@ public class PushNotificationsPageTestCases extends BaseClass{
 	  Assert.assertEquals(actualResult, expectedResult, Constant.EXPECTEDTEXTERROR);
   }
 }
-//Test

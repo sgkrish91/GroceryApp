@@ -2,6 +2,7 @@ package utilities;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Properties;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -14,9 +15,18 @@ public class ExcelRead {
 	public static XSSFWorkbook w;
 	public static XSSFSheet s;
 	
-	public static String readStringData(String sheet, int i, int j) throws IOException
+    public static Properties prop;
+	
+	public static void testBasic() throws IOException {
+		prop=new Properties();		
+		FileInputStream ip=new FileInputStream(System.getProperty("user.dir")+"\\src\\main\\resources\\Config.properties");	
+		prop.load(ip);	
+	}
+	
+	public static String readStringData(String excel, String sheet, int i, int j) throws IOException
 	{
-		f=new FileInputStream(System.getProperty("user.dir")+ "\\src\\main\\resources\\Credentials.xlsx");		//Fetching the file from the specified path
+		testBasic();
+		f=new FileInputStream(System.getProperty("user.dir")+ excel);		//Fetching the file from the specified path
 		w=new XSSFWorkbook(f);		//Fetching the workbook from the file
 		s=w.getSheet(sheet);		//Fetching the sheet named Sheet1 from the workbook
 		Row r=s.getRow(i);		//Method to get the row
@@ -25,9 +35,9 @@ public class ExcelRead {
 		
 	}
 	
-	public static String readIntegerData(String sheet, int i, int j) throws IOException
+	public static String readIntegerData(String excel, String sheet, int i, int j) throws IOException
 	{
-		f=new FileInputStream(System.getProperty("user.dir")+ "\\src\\main\\resources\\Credentials.xlsx");
+		f=new FileInputStream(System.getProperty("user.dir")+ excel);
 		w=new XSSFWorkbook(f);
 		s=w.getSheet(sheet);
 		Row r=s.getRow(i);

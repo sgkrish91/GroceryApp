@@ -46,7 +46,6 @@ public class BaseClass {
 		  else if(browserName.equals("Edge")) {
 			  driver=new EdgeDriver();
 		  }
-		  //driver=new ChromeDriver();
 		  driver.get(prop.getProperty("BaseURL"));
 		  driver.manage().window().maximize();
 		  driver.manage().timeouts().implicitlyWait(Duration.ofMillis(5000));

@@ -23,8 +23,8 @@ public class AdminUsersTestCases extends BaseClass {
 	@Test
 	public void verifyWhetherAdminUsersTableListsUsersAccordingToSearchCriteria() throws IOException {
 		lp = new LoginPage(driver);
-		lp.enterUsername(ExcelRead.readStringData("Sheet1", 1, 0));
-		lp.enterPassword(ExcelRead.readStringData("Sheet1", 1, 0));
+		lp.enterUsername(ExcelRead.readStringData(prop.getProperty("LoginExcel"), "Sheet1", 1, 0));
+		lp.enterPassword(ExcelRead.readStringData(prop.getProperty("LoginExcel"), "Sheet1", 1, 0));
 		lp.clickSignIn();
 		dp = new DashboardPage(driver);
 		dp.clickAdminUsers();

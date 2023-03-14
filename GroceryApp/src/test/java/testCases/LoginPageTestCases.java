@@ -4,6 +4,7 @@ import org.testng.annotations.Test;
 
 import constant.Constant;
 import elementRepository.LoginPage;
+import utilities.DataProviderUtility;
 import utilities.ExcelRead;
 
 import java.io.IOException;
@@ -17,6 +18,8 @@ import org.testng.Assert;
 public class LoginPageTestCases extends BaseClass {//inheritance. We add the BeforeMethod and AfterMethod inside another class BaseClass and extend the same here.
 	
 	LoginPage lp;
+	
+	
 	
   @Test(groups = {"Critical"} )
   public void verifyTheTextOfSignInButton() {
@@ -36,9 +39,10 @@ public class LoginPageTestCases extends BaseClass {//inheritance. We add the Bef
   
   @Test(groups = {"Critical"} )
   public void verifyUserIsAbleToLoginWithValidCredentials() throws IOException {
+	  testBasic();
 	  lp=new LoginPage(driver);
-	  lp.enterUsername(ExcelRead.readStringData("Sheet1", 1, 0));
-	  lp.enterPassword(ExcelRead.readStringData("Sheet1", 1, 0));
+	  lp.enterUsername(ExcelRead.readStringData(prop.getProperty("LoginExcel"), "Sheet1", 1, 0));
+	  lp.enterPassword(ExcelRead.readStringData(prop.getProperty("LoginExcel"), "Sheet1", 1, 0));
 	  lp.clickSignIn();
 	  String actualResult=lp.URLAfterSignIn();
 	  String expectedResult="https://groceryapp.uniqassosiates.com/admin";
@@ -48,7 +52,7 @@ public class LoginPageTestCases extends BaseClass {//inheritance. We add the Bef
 	  Assert.assertEquals(actualResult1, expectedResult1, Constant.LOGINERROR);
   }
   
-  @Test(dataProvider ="dataProvider",dataProviderClass = DataProviderTest.class)
+  @Test(dataProvider ="dataProvider",dataProviderClass = DataProviderUtility.class)
   public void verifyTheErrorMessageWhenLoginUsingInvalidCredentials(String user, String pass) {
 	  lp=new LoginPage(driver);
 	  lp.enterUsername(user);
