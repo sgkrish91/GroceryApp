@@ -48,6 +48,7 @@ public class ManageContentPage {
 	}
 	
 	public void clickUpdate() {
+		ew.elementToBeClickableExplicitWait(driver, update);
 		update.click();
 	}
 	

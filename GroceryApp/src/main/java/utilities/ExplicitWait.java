@@ -24,5 +24,10 @@ public class ExplicitWait {
 		WebDriverWait wait=new WebDriverWait(driver, Duration.ofMillis(5000));
 		wait.until(ExpectedConditions.elementToBeClickable(element));
 	}
+	
+	public void elementToBeClickableExplicitWait(WebDriver driver, WebElement element) {
+		WebDriverWait wait=new WebDriverWait(driver, Duration.ofMillis(5000));
+		wait.until(ExpectedConditions.elementToBeClickable(element));
+	}
 
 }
