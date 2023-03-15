@@ -9,6 +9,7 @@
 			<class name="testCases.DashboardPageTestCases" />
 			<class name="testCases.PushNotificationsPageTestCases" />
 			<class name="testCases.ManagePaymentMethodsTestCases" />
+			<class name="testCases.ManageContentPageTestCases" />
 		</classes>
 	</test>
 </suite>
