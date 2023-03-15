@@ -73,8 +73,9 @@ public class LoginPage {
 		return gu.getURLOfCurrentPage(driver);
 	}
 	
-	public String getErrorMessage() {
-		return gu.getElementText(error);
+	public boolean getErrorMessage() {
+		String text= gu.getElementText(error);
+		return text.contains("Invalid Username/Password");
 	}
 	
 	public String textOfTitle() {

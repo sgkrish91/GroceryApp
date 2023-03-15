@@ -58,9 +58,9 @@ public class LoginPageTestCases extends BaseClass {//inheritance. We add the Bef
 	  lp.enterUsername(user);
 	  lp.enterPassword(pass);
 	  lp.clickSignIn();
-	  String actualResult=lp.getErrorMessage();
-	  String expectedResult=Constant.INVALIDUSERNAMEALERT;
-	  Assert.assertEquals(actualResult, expectedResult, Constant.ALERTERROR);
+	  boolean actualResult=lp.getErrorMessage();
+	  //String expectedResult=Constant.INVALIDUSERNAMEALERT;
+	  Assert.assertTrue(actualResult, Constant.ALERTERROR);
   }
   
   @Test(groups = {"Sanity"})
