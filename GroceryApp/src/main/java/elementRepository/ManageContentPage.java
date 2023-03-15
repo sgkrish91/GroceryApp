@@ -54,7 +54,9 @@ public class ManageContentPage {
 		Actions actions=new Actions(driver);
 		JavascriptExecutor js = (JavascriptExecutor) driver;		//We use the Javascript interface to perform actions.
 		js.executeScript("window.scrollBy(0,3000)");
-		actions.moveToElement(update).click().build().perform();
+		js.executeScript("arguments[0].click();", update);		//To perform click action
+
+		//actions.moveToElement(update).click().build().perform();
 		//update.click();
 	}
 	
