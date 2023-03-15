@@ -3,6 +3,7 @@ package elementRepository;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -51,6 +52,8 @@ public class ManageContentPage {
 	public void clickUpdate() {
 		ew.elementToBeClickableExplicitWait(driver, update);
 		Actions actions=new Actions(driver);
+		JavascriptExecutor js = (JavascriptExecutor) driver;		//We use the Javascript interface to perform actions.
+		js.executeScript("window.scrollBy(0,3000)");
 		actions.moveToElement(update).click().build().perform();
 		//update.click();
 	}
