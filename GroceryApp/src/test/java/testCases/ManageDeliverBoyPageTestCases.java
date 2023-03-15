@@ -18,7 +18,7 @@ public class ManageDeliverBoyPageTestCases extends BaseClass {
 	ManageDeliveryBoyPage md;
 	
   @Test
-  public void verifyTheUsernameOfADeliverBoy() throws IOException {
+  public void verifyTheUsernameOfADeliveryBoy() throws IOException {
 	  lp=new LoginPage(driver);
 	  lp.enterUsername(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 0));
 	  lp.enterPassword(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 1));
@@ -27,7 +27,7 @@ public class ManageDeliverBoyPageTestCases extends BaseClass {
 	  dp.clickManageDeliveryBoy();
 	  md=new ManageDeliveryBoyPage(driver);
 	  String actualResult=md.getTextOfUsername();
-	  String expectedResult="Tristan";
+	  String expectedResult="Trudie05";
 	  Assert.assertEquals(actualResult, expectedResult, Constant.EXPECTEDTEXTERROR);
   }
   
