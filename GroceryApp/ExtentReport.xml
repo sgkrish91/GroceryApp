@@ -7,7 +7,7 @@
 		<classes>
 			<class name="testCases.LoginPageTestCases" />
 			<class name="testCases.DashboardPageTestCases" />
-			<class name="testCases.PushNotificationPageTestCases" />
+			<class name="testCases.PushNotificationsPageTestCases" />
 			<class name="testCases.ManagePaymentMethodsTestCases" />
 		</classes>
 	</test>
