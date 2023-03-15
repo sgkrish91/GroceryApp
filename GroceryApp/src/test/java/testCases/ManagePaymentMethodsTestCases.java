@@ -17,7 +17,7 @@ public class ManagePaymentMethodsTestCases extends BaseClass{
 	DashboardPage dp;
 	ManagePaymentMethodsPage mp;
 	
-  @Test
+  @Test(groups="Sanity")
   public void verifyWhetherUserIsAbleToIncreaseTheLimitOfUPIPayment() throws IOException {
 	  testBasic();
 	  lp=new LoginPage(driver);

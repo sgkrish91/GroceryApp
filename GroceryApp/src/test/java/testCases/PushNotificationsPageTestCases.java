@@ -17,7 +17,7 @@ public class PushNotificationsPageTestCases extends BaseClass{
 	DashboardPage dp;
 	PushNotificationsPage pn;
 	
-  @Test
+  @Test(groups="Regression")
   public void verifyWhetherUserIsAbleToSendPushNotifications() throws IOException {
 	  testBasic();
 	  lp=new LoginPage(driver);
@@ -34,7 +34,7 @@ public class PushNotificationsPageTestCases extends BaseClass{
 	  Assert.assertTrue(actualResult, Constant.ALERTERROR);
   }
   
-  @Test
+  @Test(groups="Sanity")
   public void verifyWhetherUserIsAbleToClearTheDataEnteredInTitleTextboxWhileClickingResetButton() throws IOException {
 	  testBasic();
 	  lp=new LoginPage(driver);
