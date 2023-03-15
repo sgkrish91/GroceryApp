@@ -8,12 +8,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import utilities.ExplicitWait;
 import utilities.GeneralUtilities;
 
 public class ManageContentPage {
 	
 	WebDriver driver;
 	GeneralUtilities gu=new GeneralUtilities();
+	ExplicitWait ew=new ExplicitWait();
 	
 	public ManageContentPage(WebDriver driver) {
 		this.driver=driver;
@@ -49,8 +51,8 @@ public class ManageContentPage {
 		update.click();
 	}
 	
-	public String getTextOfAlert() {
-		return gu.getElementText(alert);
+	public boolean getTextOfAlert(String text) {
+		return gu.getExpectedResultAlert(alert, text);
 	}
 	
 	public String verifyUpdatedValue() {

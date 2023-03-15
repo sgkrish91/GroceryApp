@@ -62,8 +62,8 @@ public class ManageCategoryPage {
 		saveButton.click();
 	}
 	
-	public String getAlertText() {
-		return gu.getElementText(alert);
+	public boolean getAlertText(String text) {
+		return gu.getExpectedResultAlert(alert, text);
 	}
 	
 	public void getLocatorToDelete() {

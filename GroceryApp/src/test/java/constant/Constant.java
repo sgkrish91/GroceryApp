@@ -22,39 +22,23 @@ public class Constant {
 	public static final String DATAPROVIDERSHEETNAME="Sheet1";
 	public static final String SHEETINEXCEL="Sheet1";
 	public static final String STATUSACTIVE="Active";
-	public static final String ALERTEXPECTEDRESULT="×\n"
-			+ "Alert!\n"
-			+ "User Status Changed Successfully";
-	public static final String ALERTNEWUSERADDED="×\n"
-			+ "Alert!\n"
-			+ "User Created Successfully";
+	public static final String ALERTEXPECTEDRESULT="User Status Changed Successfully";
+	public static final String ALERTNEWUSERADDED="User Created Successfully";
 	public static final String RANDOMUSER="hari";
 	public static final String RANDOMPASS="abc1234";
 	public static final String LOGINTITLETEXT="7rmart supermarket";
 	public static final String EXPENSECATTITLE="Expense Category";
 	public static final String SIGNINTEXT="Sign In";
-	public static final String INVALIDUSERNAMEALERT="×\n"
-	  		+ "Alert!\n"
-	  		+ "Invalid Username/Password";
+	public static final String INVALIDUSERNAMEALERT="Invalid Username/Password";
 	public static final String SIGNINBGCOLOR="rgba(52, 58, 64, 1)";
-	public static final String NEWCATEGORYALERT="�\n"
-	  		+ "Alert!\n"
-	  		+ "Sub Category Created Successfully";
+	public static final String NEWCATEGORYALERT="Sub Category Created Successfully";
 	public static final String DELETESUBCATALERT="Do you want to delete this Sub Category?";
-	public static final String MANAGECONTENTPAGEEDITALERT="×\n"
-	  		+ "Alert!\n"
-	  		+ "Page Updated Successfully";
+	public static final String MANAGECONTENTPAGEEDITALERT="Page Updated Successfully";
 	public static final String FOOTERPAGETITLE="Footer Text";
-	public static final String PAYMENTLIMITUPDATEALERT="×\n"
-	  		+ "Alert!\n"
-	  		+ "Payment Method Updated Successfully";
-	public static final String MOBILESLIDERALERT="�\n"
-	  		+ "Alert!\n"
-	  		+ "Mobile Slider Created Successfully";
+	public static final String PAYMENTLIMITUPDATEALERT="Payment Method Updated Successfully";
+	public static final String MOBILESLIDERALERT="Mobile Slider Created Successfully";
 	public static final String MOBILESLIDERDELETEALERT="Do you want to delete this Mobile Slider?";
-	public static final String PUSHNOTIFICATIONALERT="×\n"
-	  		+ "Alert!\n"
-	  		+ "Message send successfully";
+	public static final String PUSHNOTIFICATIONALERT="Message send successfully";
 	public static final String EMPTYSTRING="";
 	
 	

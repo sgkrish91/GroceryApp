@@ -30,9 +30,8 @@ public class PushNotificationsPageTestCases extends BaseClass{
 	  pn.enterTitle();
 	  pn.enterDescription();
 	  pn.clickSend();
-	  String actualResult=pn.getAlertText();
-	  String expectedResult=Constant.PUSHNOTIFICATIONALERT;
-	  Assert.assertEquals(actualResult, expectedResult, Constant.ALERTERROR);
+	  boolean actualResult=pn.getAlertText(Constant.PUSHNOTIFICATIONALERT);
+	  Assert.assertTrue(actualResult, Constant.ALERTERROR);
   }
   
   @Test

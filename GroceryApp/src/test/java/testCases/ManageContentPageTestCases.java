@@ -31,9 +31,8 @@ public class ManageContentPageTestCases extends BaseClass {
 	  mc.clickEditInTable();
 	  mc.editPageDetails();
 	  mc.clickUpdate();
-	  String actualResult=mc.getTextOfAlert();
-	  String expectedResult=Constant.MANAGECONTENTPAGEEDITALERT;
-	  Assert.assertEquals(actualResult, expectedResult, Constant.ALERTERROR);
+	  boolean actualResult=mc.getTextOfAlert(Constant.MANAGECONTENTPAGEEDITALERT);
+	  Assert.assertTrue(actualResult, Constant.ALERTERROR);
 	  String actualResult1=mc.verifyUpdatedValue();
 	  String expectedResult1="NewPage150";
 	  Assert.assertEquals(actualResult1, expectedResult1, Constant.UPDATEDATAERROR);

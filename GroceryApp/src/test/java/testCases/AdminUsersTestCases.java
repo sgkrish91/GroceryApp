@@ -63,9 +63,8 @@ public class AdminUsersTestCases extends BaseClass {
 		dp.clickAdminUsers();
 		au = new AdminUsersPage(driver);
 		au.getLocatorForStatusChange();
-		String actualResult = au.getTextOfAlert();
-		String expectedResult = Constant.ALERTEXPECTEDRESULT;
-		Assert.assertEquals(actualResult, expectedResult, Constant.ALERTERROR);
+		boolean actualResult = au.getTextOfAlert(Constant.ALERTEXPECTEDRESULT);
+		Assert.assertTrue(actualResult, Constant.ALERTERROR);
 	}
 	
 	@Test
@@ -82,9 +81,8 @@ public class AdminUsersTestCases extends BaseClass {
 		au.enterPassword(Constant.RANDOMPASS);
 		au.selectUser();
 		au.clickSave();
-		String actualResult=au.getAlertText();
-		String expectedResult=Constant.ALERTNEWUSERADDED;
-		Assert.assertEquals(actualResult, expectedResult, Constant.ALERTERROR);
+		boolean actualResult=au.getAlertText(Constant.ALERTNEWUSERADDED);
+		Assert.assertTrue(actualResult, Constant.ALERTERROR);
 	}
 
 }

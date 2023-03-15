@@ -36,7 +36,6 @@ public class ManageProductPageTestCases extends BaseClass{
 	  mp.selectSubCategory();
 	  mp.clickSearchInList();
 	  boolean actualResult=mp.verifyCategoryInTable();
-	  //boolean expectedResult=true;
 	  Assert.assertTrue(actualResult, Constant.LISTPRODUCTCATEGORYERROR);
 	  
   }

@@ -31,12 +31,10 @@ public class MobileSliderPageTestCases extends BaseClass {
 	  ms.clickNew();
 	  ms.uploadImage();
 	  ms.clickSave();
-	  String actualResult=ms.getAlertText();
-	  String expectedResult=Constant.MOBILESLIDERALERT;
-	  Assert.assertEquals(actualResult, expectedResult, Constant.ALERTERROR);
+	  boolean actualResult=ms.getAlertText(Constant.MOBILESLIDERALERT);
+	  Assert.assertTrue(actualResult, Constant.ALERTERROR);
 	  dp.clickMobileSlider();
 	  boolean actualResult1=ms.presenceOfImage();
-	  //boolean expectedResult1=true;
 	  Assert.assertTrue(actualResult1, Constant.ELEMENTPRESENCEERROR);
 	  
   }

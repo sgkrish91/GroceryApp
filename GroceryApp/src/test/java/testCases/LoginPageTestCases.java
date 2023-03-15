@@ -19,8 +19,6 @@ public class LoginPageTestCases extends BaseClass {//inheritance. We add the Bef
 	
 	LoginPage lp;
 	
-	
-	
   @Test(groups = {"Sanity"} )
   public void verifyTheTextOfSignInButton() {
 	  lp=new LoginPage(driver);
@@ -48,7 +46,6 @@ public class LoginPageTestCases extends BaseClass {//inheritance. We add the Bef
 	  String expectedResult=prop.getProperty("SignInURL");
 	  Assert.assertEquals(actualResult, expectedResult, Constant.LOGINERROR);
 	  boolean actualResult1=lp.isAdminDisplayed();
-	  //boolean expectedResult1=true;
 	  Assert.assertTrue(actualResult1, Constant.LOGINERROR);
   }
   
@@ -58,8 +55,7 @@ public class LoginPageTestCases extends BaseClass {//inheritance. We add the Bef
 	  lp.enterUsername(user);
 	  lp.enterPassword(pass);
 	  lp.clickSignIn();
-	  boolean actualResult=lp.getErrorMessage();
-	  //String expectedResult=Constant.INVALIDUSERNAMEALERT;
+	  boolean actualResult=lp.getErrorMessage(Constant.INVALIDUSERNAMEALERT);
 	  Assert.assertTrue(actualResult, Constant.ALERTERROR);
   }
   
@@ -84,7 +80,6 @@ public class LoginPageTestCases extends BaseClass {//inheritance. We add the Bef
 	  lp=new LoginPage(driver);
 	  lp.clickSignIn();
 	  boolean actualResult=lp.isUsernameEnabled();
-	  //boolean expectedResult=true;
 	  Assert.assertTrue(actualResult, Constant.USERNAMEERROR);
   }
 

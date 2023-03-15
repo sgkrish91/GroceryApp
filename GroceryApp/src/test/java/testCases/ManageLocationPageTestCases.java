@@ -28,7 +28,6 @@ public class ManageLocationPageTestCases extends BaseClass {
 	  dp.clickManageLocation();
 	  ml=new ManageLocationPage(driver);
 	  boolean actualResult=ml.verifyingDeliveryCharge();
-	  //boolean expectedResult=true;
 	  Assert.assertTrue(actualResult, Constant.ERRORINDELIVERYCHARGE);
   }
 }

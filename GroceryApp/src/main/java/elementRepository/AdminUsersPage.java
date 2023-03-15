@@ -86,8 +86,8 @@ public class AdminUsersPage {
 		statusDetails.click();
 	}
 	
-	public String getTextOfAlert() {
-		return gu.getElementText(alert);
+	public boolean getTextOfAlert(String text) {
+		return gu.getExpectedResultAlert(alert, text);
 		
 	}
 	
@@ -112,8 +112,8 @@ public class AdminUsersPage {
 		saveButton.click();
 	}
 	
-	public String getAlertText() {
-		return gu.getElementText(alert);
+	public boolean getAlertText(String text) {
+		return gu.getExpectedResultAlert(alert, text);
 	}
 
 }

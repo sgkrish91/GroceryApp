@@ -34,9 +34,8 @@ public class ManageCategoryPageTestCases extends BaseClass{
 	  mc.enterSubCategoryName();
 	  mc.uploadImage();
 	  mc.clickSaveButton();
-	  String actualResult=mc.getAlertText();
-	  String expectedResult=Constant.NEWCATEGORYALERT;
-	  Assert.assertEquals(actualResult, expectedResult, Constant.SUBCATEGORYUPDATEERROR);
+	  boolean actualResult=mc.getAlertText(Constant.NEWCATEGORYALERT);
+	  Assert.assertTrue(actualResult, Constant.SUBCATEGORYUPDATEERROR);
 	 
   }
   

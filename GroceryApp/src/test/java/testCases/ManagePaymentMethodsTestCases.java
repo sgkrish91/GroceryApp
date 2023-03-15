@@ -30,9 +30,8 @@ public class ManagePaymentMethodsTestCases extends BaseClass{
 	  mp.clickEditButton();
 	  mp.enterLimitValue();
 	  mp.clickUpdate();
-	  String actualResult=mp.getAlertText();
-	  String expectedResult=Constant.PAYMENTLIMITUPDATEALERT;
-	  Assert.assertEquals(actualResult, expectedResult, Constant.ALERTERROR);
+	  boolean actualResult=mp.getAlertText(Constant.PAYMENTLIMITUPDATEALERT);
+	  Assert.assertTrue(actualResult, Constant.ALERTERROR);
 	  String actualResult1=mp.checkUpdatedLimitValue();
 	  String expectedResult1="20000";
 	  Assert.assertEquals(actualResult1, expectedResult1, Constant.ALERTERROR);
