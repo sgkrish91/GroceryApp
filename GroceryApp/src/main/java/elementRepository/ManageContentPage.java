@@ -28,7 +28,7 @@ public class ManageContentPage {
 	@FindBy(id="page")
 	private WebElement page;
 	
-	@FindBy(xpath="//button[@class='btn btn-danger']")
+	@FindBy(xpath="//div[@class='card-footer']//button")
 	private WebElement update;
 	
 	@FindBy(xpath="//div[@class='alert alert-success alert-dismissible']")
