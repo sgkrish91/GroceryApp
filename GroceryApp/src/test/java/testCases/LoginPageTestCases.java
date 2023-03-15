@@ -39,8 +39,8 @@ public class LoginPageTestCases extends BaseClass {//inheritance. We add the Bef
   public void verifyUserIsAbleToLoginWithValidCredentials() throws IOException {
 	  testBasic();
 	  lp=new LoginPage(driver);
-	  lp.enterUsername(ExcelRead.readStringData(prop.getProperty("LoginExcel"), "Sheet1", 1, 0));
-	  lp.enterPassword(ExcelRead.readStringData(prop.getProperty("LoginExcel"), "Sheet1", 1, 0));
+	  lp.enterUsername(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 0));
+	  lp.enterPassword(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 0));
 	  lp.clickSignIn();
 	  String actualResult=lp.URLAfterSignIn();
 	  String expectedResult=prop.getProperty("SignInURL");
