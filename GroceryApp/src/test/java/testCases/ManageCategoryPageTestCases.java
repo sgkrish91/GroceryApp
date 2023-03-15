@@ -1,6 +1,7 @@
 package testCases;
 
 import java.awt.AWTException;
+import java.io.IOException;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -19,8 +20,8 @@ public class ManageCategoryPageTestCases extends BaseClass{
 	ManageCategoryPage mc;
 	
   @Test
-  public void verifyWhetherUserIsAbleToAddNewCategoryInManageCategoryPage() throws AWTException {
-	  
+  public void verifyWhetherUserIsAbleToAddNewCategoryInManageCategoryPage() throws AWTException, IOException {
+	  testBasic();
 	  lp=new LoginPage(driver);
 	  lp.enterUsername(Constant.LOGINUSER);
 	  lp.enterPassword(Constant.LOGINPASSWORD);
@@ -32,7 +33,7 @@ public class ManageCategoryPageTestCases extends BaseClass{
 	  mc.clickNewButton();
 	  mc.selectCategoryName();
 	  mc.enterSubCategoryName();
-	  mc.uploadImage();
+	  mc.uploadImage(prop.getProperty("ImageUpload"));
 	  mc.clickSaveButton();
 	  boolean actualResult=mc.getAlertText(Constant.NEWCATEGORYALERT);
 	  Assert.assertTrue(actualResult, Constant.SUBCATEGORYUPDATEERROR);

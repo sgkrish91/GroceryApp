@@ -54,8 +54,8 @@ public class ManageCategoryPage {
 		subCategory.sendKeys("GreenVegetables");
 	}
 	
-	public void uploadImage() throws AWTException {
-		gu.fileUpload(driver, chooseFile, System.getProperty("user.dir")+ "\\src\\main\\resources\\vegetables.jpg");
+	public void uploadImage(String text) throws AWTException {
+		gu.fileUpload(driver, chooseFile, System.getProperty("user.dir")+ text);
 	}
 	
 	public void clickSaveButton() {
@@ -68,7 +68,7 @@ public class ManageCategoryPage {
 	
 	public void getLocatorToDelete() {
 		int index=gu.getTableLocatorValue(listSubCategory, "abcd");
-		String locator="//table[@class='table table-bordered table-hover table-sm']//tr["+(index+1)+"]//td[5]//a[2]";
+		String locator="//table[@class='table table-bordered table-hover table-sm']//tr["+(index+1)+"]//td[5]//a[2]//i";
 		WebElement deleteButton=driver.findElement(By.xpath(locator));
 		deleteButton.click();
 	}

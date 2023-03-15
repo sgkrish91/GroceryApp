@@ -2,7 +2,7 @@
 	<test name="ChromeTest">
 		<parameter name="browser" value="Chrome"></parameter>
 		<classes>
-			<class name="testCases.PushNotificationsPageTestCases"></class> 
+			<class name="testCases.ManageCategoryPageTestCases"></class> 
 		</classes>
 	</test>
 </suite>
