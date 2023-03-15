@@ -19,6 +19,11 @@ public class GeneralUtilities {
 		return text;
 	}
 	
+	public boolean getExpectedResultAlert(WebElement element, String text) {
+		String alert=element.getText();
+		return alert.contains(text);
+	}
+	
 	public boolean isCheckboxSelected(WebElement element) {
 		boolean result=element.isSelected();
 		return result;
