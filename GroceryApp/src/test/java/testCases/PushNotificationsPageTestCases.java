@@ -21,8 +21,8 @@ public class PushNotificationsPageTestCases extends BaseClass{
   public void verifyWhetherUserIsAbleToSendPushNotifications() throws IOException {
 	  testBasic();
 	  lp=new LoginPage(driver);
-	  lp.enterUsername(ExcelRead.readStringData(prop.getProperty("LoginExcel"), "Sheet1", 1, 0));
-	  lp.enterPassword(ExcelRead.readStringData(prop.getProperty("LoginExcel"), "Sheet1", 1, 1));
+	  lp.enterUsername(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 0));
+	  lp.enterPassword(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 1));
 	  lp.clickSignIn();
 	  dp=new DashboardPage(driver);
 	  dp.clickPushNotification();
@@ -31,9 +31,7 @@ public class PushNotificationsPageTestCases extends BaseClass{
 	  pn.enterDescription();
 	  pn.clickSend();
 	  String actualResult=pn.getAlertText();
-	  String expectedResult="×\n"
-	  		+ "Alert!\n"
-	  		+ "Message send successfully";
+	  String expectedResult=Constant.PUSHNOTIFICATIONALERT;
 	  Assert.assertEquals(actualResult, expectedResult, Constant.ALERTERROR);
   }
   
@@ -41,8 +39,8 @@ public class PushNotificationsPageTestCases extends BaseClass{
   public void verifyWhetherUserIsAbleToClearTheDataEnteredInTitleTextboxWhileClickingResetButton() throws IOException {
 	  testBasic();
 	  lp=new LoginPage(driver);
-	  lp.enterUsername(ExcelRead.readStringData(prop.getProperty("LoginExcel"), "Sheet1", 1, 0));
-	  lp.enterPassword(ExcelRead.readStringData(prop.getProperty("LoginExcel"), "Sheet1", 1, 1));
+	  lp.enterUsername(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 0));
+	  lp.enterPassword(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 1));
 	  lp.clickSignIn();
 	  dp=new DashboardPage(driver);
 	  dp.clickPushNotification();
@@ -50,7 +48,7 @@ public class PushNotificationsPageTestCases extends BaseClass{
 	  pn.enterTitle();
 	  pn.clickReset();
 	  String actualResult=pn.getTextOfTitle();
-	  String expectedResult="";
+	  String expectedResult=Constant.EMPTYSTRING;
 	  Assert.assertEquals(actualResult, expectedResult, Constant.EXPECTEDTEXTERROR);
   }
 }

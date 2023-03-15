@@ -21,8 +21,8 @@ public class ManageContentPageTestCases extends BaseClass {
   public void verifyWhetherUserIsAbleToEditPageDetailsOfExistingTitle() throws IOException {
 	  testBasic();
 	  lp=new LoginPage(driver);
-	  lp.enterUsername(ExcelRead.readStringData(prop.getProperty("LoginExcel"), "Sheet1", 1, 0));
-	  lp.enterPassword(ExcelRead.readStringData(prop.getProperty("LoginExcel"), "Sheet1", 1, 1));
+	  lp.enterUsername(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 0));
+	  lp.enterPassword(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 1));
 	  lp.clickSignIn();
 	  dp=new DashboardPage(driver);
 	  dp.clickManageContent();
@@ -32,9 +32,7 @@ public class ManageContentPageTestCases extends BaseClass {
 	  mc.editPageDetails();
 	  mc.clickUpdate();
 	  String actualResult=mc.getTextOfAlert();
-	  String expectedResult="×\n"
-	  		+ "Alert!\n"
-	  		+ "Page Updated Successfully";
+	  String expectedResult=Constant.MANAGECONTENTPAGEEDITALERT;
 	  Assert.assertEquals(actualResult, expectedResult, Constant.ALERTERROR);
 	  String actualResult1=mc.verifyUpdatedValue();
 	  String expectedResult1="NewPage150";

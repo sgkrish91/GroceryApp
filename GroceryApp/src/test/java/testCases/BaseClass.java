@@ -58,6 +58,7 @@ public class BaseClass {
 			  ss=new ScreenshotUtilities();
 			  ss.captureFailureScreenShot(driver, itestResult.getName());	//itestResult.getName() is used to get the name of the tc which is failed.
 		  }
+		  
 		  driver.quit();
 	  }
  

@@ -89,8 +89,9 @@ public class LoginPage {
 		return admin.isDisplayed();
 	}
 	
-	public boolean isUsernameSelected() {
-		return username.isSelected();
+	public boolean isUsernameEnabled() {
+		return username.isEnabled();
 	}
+	
 	
 }

@@ -22,8 +22,8 @@ public class MobileSliderPageTestCases extends BaseClass {
   public void verifyWhetherUserIsAbleToAddNewImage() throws IOException, AWTException {
 	  testBasic();
 	  lp=new LoginPage(driver);
-	  lp.enterUsername(ExcelRead.readStringData(prop.getProperty("LoginExcel"), "Sheet1", 1, 0));
-	  lp.enterPassword(ExcelRead.readStringData(prop.getProperty("LoginExcel"), "Sheet1", 1, 1));
+	  lp.enterUsername(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 0));
+	  lp.enterPassword(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 1));
 	  lp.clickSignIn();
 	  dp=new DashboardPage(driver);
 	  dp.clickMobileSlider();
@@ -32,14 +32,12 @@ public class MobileSliderPageTestCases extends BaseClass {
 	  ms.uploadImage();
 	  ms.clickSave();
 	  String actualResult=ms.getAlertText();
-	  String expectedResult="�\n"
-	  		+ "Alert!\n"
-	  		+ "Mobile Slider Created Successfully";
+	  String expectedResult=Constant.MOBILESLIDERALERT;
 	  Assert.assertEquals(actualResult, expectedResult, Constant.ALERTERROR);
 	  dp.clickMobileSlider();
 	  boolean actualResult1=ms.presenceOfImage();
-	  boolean expectedResult1=true;
-	  Assert.assertEquals(actualResult1, expectedResult1, Constant.ELEMENTPRESENCEERROR);
+	  //boolean expectedResult1=true;
+	  Assert.assertTrue(actualResult1, Constant.ELEMENTPRESENCEERROR);
 	  
   }
   
@@ -47,15 +45,15 @@ public class MobileSliderPageTestCases extends BaseClass {
   public void verifyTheAlertTextWhileClickingDeleteButtonInMobileSliderPage() throws IOException {
 	  testBasic();
 	  lp=new LoginPage(driver);
-	  lp.enterUsername(ExcelRead.readStringData(prop.getProperty("LoginExcel"), "Sheet1", 1, 0));
-	  lp.enterPassword(ExcelRead.readStringData(prop.getProperty("LoginExcel"), "Sheet1", 1, 1));
+	  lp.enterUsername(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 0));
+	  lp.enterPassword(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 1));
 	  lp.clickSignIn();
 	  dp=new DashboardPage(driver);
 	  dp.clickMobileSlider();
 	  ms=new MobileSliderPage(driver);
 	  ms.clickDelete();
 	  String actualResult=ms.getTextOfDeleteAlert();
-	  String expectedResult="Do you want to delete this Mobile Slider?";
+	  String expectedResult=Constant.MOBILESLIDERDELETEALERT;
 	  Assert.assertEquals(actualResult, expectedResult, Constant.ALERTERROR);
   }
 }

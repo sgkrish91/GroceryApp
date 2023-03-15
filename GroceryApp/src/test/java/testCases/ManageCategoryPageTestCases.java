@@ -35,9 +35,7 @@ public class ManageCategoryPageTestCases extends BaseClass{
 	  mc.uploadImage();
 	  mc.clickSaveButton();
 	  String actualResult=mc.getAlertText();
-	  String expectedResult="�\n"
-	  		+ "Alert!\n"
-	  		+ "Sub Category Created Successfully";
+	  String expectedResult=Constant.NEWCATEGORYALERT;
 	  Assert.assertEquals(actualResult, expectedResult, Constant.SUBCATEGORYUPDATEERROR);
 	 
   }
@@ -55,7 +53,7 @@ public class ManageCategoryPageTestCases extends BaseClass{
 	  mc=new ManageCategoryPage(driver);
 	  mc.getLocatorToDelete();
 	  String actualResult=mc.getDeleteAlertText();
-	  String expectedResult="Do you want to delete this Sub Category?";
+	  String expectedResult=Constant.DELETESUBCATALERT;
 	  Assert.assertEquals(actualResult, expectedResult, Constant.ALERTERROR);
 	  
   }

@@ -21,8 +21,8 @@ public class ManagePaymentMethodsTestCases extends BaseClass{
   public void verifyWhetherUserIsAbleToIncreaseTheLimitOfUPIPayment() throws IOException {
 	  testBasic();
 	  lp=new LoginPage(driver);
-	  lp.enterUsername(ExcelRead.readStringData(prop.getProperty("LoginExcel"), "Sheet1", 1, 0));
-	  lp.enterPassword(ExcelRead.readStringData(prop.getProperty("LoginExcel"), "Sheet1", 1, 1));
+	  lp.enterUsername(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 0));
+	  lp.enterPassword(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 1));
 	  lp.clickSignIn();
 	  dp=new DashboardPage(driver);
 	  dp.clickManagePaymentMethod();
@@ -31,9 +31,7 @@ public class ManagePaymentMethodsTestCases extends BaseClass{
 	  mp.enterLimitValue();
 	  mp.clickUpdate();
 	  String actualResult=mp.getAlertText();
-	  String expectedResult="×\n"
-	  		+ "Alert!\n"
-	  		+ "Payment Method Updated Successfully";
+	  String expectedResult=Constant.PAYMENTLIMITUPDATEALERT;
 	  Assert.assertEquals(actualResult, expectedResult, Constant.ALERTERROR);
 	  String actualResult1=mp.checkUpdatedLimitValue();
 	  String expectedResult1="20000";

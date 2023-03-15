@@ -23,8 +23,8 @@ public class AdminUsersTestCases extends BaseClass {
 	@Test
 	public void verifyWhetherAdminUsersTableListsUsersAccordingToSearchCriteria() throws IOException {
 		lp = new LoginPage(driver);
-		lp.enterUsername(ExcelRead.readStringData(prop.getProperty("LoginExcel"), "Sheet1", 1, 0));
-		lp.enterPassword(ExcelRead.readStringData(prop.getProperty("LoginExcel"), "Sheet1", 1, 0));
+		lp.enterUsername(ExcelRead.readStringData(prop.getProperty("LoginExcel"), Constant.SHEETINEXCEL, 1, 0));
+		lp.enterPassword(ExcelRead.readStringData(prop.getProperty("LoginExcel"), Constant.SHEETINEXCEL, 1, 0));
 		lp.clickSignIn();
 		dp = new DashboardPage(driver);
 		dp.clickAdminUsers();
@@ -48,7 +48,7 @@ public class AdminUsersTestCases extends BaseClass {
 		dp.clickAdminUsers();
 		au = new AdminUsersPage(driver);
 		String actualResult = au.getLocator();
-		String expectedResult = AdminUsersConstant.STATUSACTIVE;
+		String expectedResult = Constant.STATUSACTIVE;
 		Assert.assertEquals(actualResult, expectedResult, Constant.TABLESEARCHERROR);
 
 	}
@@ -64,7 +64,7 @@ public class AdminUsersTestCases extends BaseClass {
 		au = new AdminUsersPage(driver);
 		au.getLocatorForStatusChange();
 		String actualResult = au.getTextOfAlert();
-		String expectedResult = AdminUsersConstant.ALERTEXPECTEDRESULT;
+		String expectedResult = Constant.ALERTEXPECTEDRESULT;
 		Assert.assertEquals(actualResult, expectedResult, Constant.ALERTERROR);
 	}
 	
@@ -78,12 +78,12 @@ public class AdminUsersTestCases extends BaseClass {
 		dp.clickAdminUsers();
 		au = new AdminUsersPage(driver);
 		au.clickNew();
-		au.enterUsername(AdminUsersConstant.RANDOMUSER);
-		au.enterPassword(AdminUsersConstant.RANDOMPASS);
+		au.enterUsername(Constant.RANDOMUSER);
+		au.enterPassword(Constant.RANDOMPASS);
 		au.selectUser();
 		au.clickSave();
 		String actualResult=au.getAlertText();
-		String expectedResult=AdminUsersConstant.ALERTNEWUSERADDED;
+		String expectedResult=Constant.ALERTNEWUSERADDED;
 		Assert.assertEquals(actualResult, expectedResult, Constant.ALERTERROR);
 	}
 

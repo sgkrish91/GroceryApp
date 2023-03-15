@@ -21,8 +21,8 @@ public class ManageFooterPageTestCases extends BaseClass{
   public void verifyTheFunctionalityOfResetButtonWhileEditingFooterText() throws IOException {
 	  testBasic();
 	  lp=new LoginPage(driver);
-	  lp.enterUsername(ExcelRead.readStringData(prop.getProperty("LoginExcel"), "Sheet1", 1, 0));
-	  lp.enterPassword(ExcelRead.readStringData(prop.getProperty("LoginExcel"), "Sheet1", 1, 1));
+	  lp.enterUsername(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 0));
+	  lp.enterPassword(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 1));
 	  lp.clickSignIn();
 	  dp=new DashboardPage(driver);
 	  dp.clickManageContent();
@@ -31,10 +31,10 @@ public class ManageFooterPageTestCases extends BaseClass{
 	  mf.clickEdit();
 	  mf.clickReset();
 	  String actualResult=mf.getURLOfPage();
-	  String expectedResult="https://groceryapp.uniqassosiates.com/admin/list-footertext";
+	  String expectedResult=prop.getProperty("FooterPageURL");
 	  Assert.assertEquals(actualResult, expectedResult, Constant.PAGELOADERROR);
 	  String actualResult1=mf.getTextOfTitle();
-	  String expectedResult1="Footer Text";
+	  String expectedResult1=Constant.FOOTERPAGETITLE;
 	  Assert.assertEquals(actualResult1, expectedResult1, Constant.PAGELOADERROR);
   }
 }

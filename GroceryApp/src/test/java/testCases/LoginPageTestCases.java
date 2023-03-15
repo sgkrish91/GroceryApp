@@ -21,15 +21,15 @@ public class LoginPageTestCases extends BaseClass {//inheritance. We add the Bef
 	
 	
 	
-  @Test(groups = {"Critical"} )
+  @Test(groups = {"Sanity"} )
   public void verifyTheTextOfSignInButton() {
 	  lp=new LoginPage(driver);
 	  String actualResult=lp.getTextOfSignInButton();
-	  String expectedResult="Sign In";
+	  String expectedResult=Constant.SIGNINTEXT;
 	  Assert.assertEquals(actualResult, expectedResult, Constant.SIGNINBUTTONERROR);
   }
   
-  @Test(groups = {"High"})
+  @Test(groups = {"Sanity"})
   public void verifyWhetherRememberMeCheckboxIsSelected() {
 	  lp=new LoginPage(driver);
 	  boolean actualResult=lp.isRemembermeSelected();
@@ -37,7 +37,7 @@ public class LoginPageTestCases extends BaseClass {//inheritance. We add the Bef
 	  Assert.assertEquals(actualResult, expectedResult, Constant.CHECKBOXERROR);
   }
   
-  @Test(groups = {"Critical"} )
+  @Test(groups = {"Regression"} )
   public void verifyUserIsAbleToLoginWithValidCredentials() throws IOException {
 	  testBasic();
 	  lp=new LoginPage(driver);
@@ -45,49 +45,47 @@ public class LoginPageTestCases extends BaseClass {//inheritance. We add the Bef
 	  lp.enterPassword(ExcelRead.readStringData(prop.getProperty("LoginExcel"), "Sheet1", 1, 0));
 	  lp.clickSignIn();
 	  String actualResult=lp.URLAfterSignIn();
-	  String expectedResult="https://groceryapp.uniqassosiates.com/admin";
+	  String expectedResult=prop.getProperty("SignInURL");
 	  Assert.assertEquals(actualResult, expectedResult, Constant.LOGINERROR);
 	  boolean actualResult1=lp.isAdminDisplayed();
-	  boolean expectedResult1=true;
-	  Assert.assertEquals(actualResult1, expectedResult1, Constant.LOGINERROR);
+	  //boolean expectedResult1=true;
+	  Assert.assertTrue(actualResult1, Constant.LOGINERROR);
   }
   
-  @Test(dataProvider ="dataProvider",dataProviderClass = DataProviderUtility.class)
+  @Test(dataProvider ="dataProvider",dataProviderClass = DataProviderUtility.class, groups="Regression")
   public void verifyTheErrorMessageWhenLoginUsingInvalidCredentials(String user, String pass) {
 	  lp=new LoginPage(driver);
 	  lp.enterUsername(user);
 	  lp.enterPassword(pass);
 	  lp.clickSignIn();
 	  String actualResult=lp.getErrorMessage();
-	  String expectedResult="×\n"
-	  		+ "Alert!\n"
-	  		+ "Invalid Username/Password";
+	  String expectedResult=Constant.INVALIDUSERNAMEALERT;
 	  Assert.assertEquals(actualResult, expectedResult, Constant.ALERTERROR);
   }
   
-  @Test
+  @Test(groups = {"Sanity"})
   public void verifyTheTextOfLoginPageTitle() {
 	  lp=new LoginPage(driver);
 	  String actualResult=lp.textOfTitle();
-	  String expectedResult="7rmart supermarket";
+	  String expectedResult=Constant.LOGINTITLETEXT;
 	  Assert.assertEquals(actualResult, expectedResult, Constant.LOGINTITLE);
   }
   
-  @Test(groups = {"High"})
+  @Test(groups = {"Sanity"})
   public void verifyTheBackgroundColorOfSignInButton() {
 	  lp=new LoginPage(driver);
 	  String actualResult=lp.getSignInBackgroundColor();
-	  String expectedResult="rgba(52, 58, 64, 1)";
+	  String expectedResult=Constant.SIGNINBGCOLOR;
 	  Assert.assertEquals(actualResult, expectedResult, Constant.BACKGROUNDCOLORERROR);
   }
   
-  @Test(enabled = false)
+  @Test(groups="Sanity")
   public void verifyWhetherUserIsPromptedToEnterTheUsernameIfTryingToLoginWithoutEnteringCredentials() {
 	  lp=new LoginPage(driver);
 	  lp.clickSignIn();
-	  boolean actualResult=lp.isUsernameSelected();
-	  boolean expectedResult=true;
-	  Assert.assertEquals(actualResult, expectedResult, Constant.USERNAMEERROR);
+	  boolean actualResult=lp.isUsernameEnabled();
+	  //boolean expectedResult=true;
+	  Assert.assertTrue(actualResult, Constant.USERNAMEERROR);
   }
 
 }

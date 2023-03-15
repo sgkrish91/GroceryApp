@@ -21,14 +21,14 @@ public class ManageLocationPageTestCases extends BaseClass {
   public void verifyWhetherTheDeliveryChargeOfLocationKeralaIsSetSame() throws IOException {
 	  testBasic();
 	  lp=new LoginPage(driver);
-	  lp.enterUsername(ExcelRead.readStringData(prop.getProperty("LoginExcel"), "Sheet1", 1, 0));
-	  lp.enterPassword(ExcelRead.readStringData(prop.getProperty("LoginExcel"), "Sheet1", 1, 1));
+	  lp.enterUsername(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 0));
+	  lp.enterPassword(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 1));
 	  lp.clickSignIn();
 	  dp=new DashboardPage(driver);
 	  dp.clickManageLocation();
 	  ml=new ManageLocationPage(driver);
 	  boolean actualResult=ml.verifyingDeliveryCharge();
-	  boolean expectedResult=true;
-	  Assert.assertEquals(actualResult, expectedResult, Constant.ERRORINDELIVERYCHARGE);
+	  //boolean expectedResult=true;
+	  Assert.assertTrue(actualResult, Constant.ERRORINDELIVERYCHARGE);
   }
 }
