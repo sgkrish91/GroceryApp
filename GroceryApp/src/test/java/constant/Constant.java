@@ -40,7 +40,7 @@ public class Constant {
 	public static final String MOBILESLIDERDELETEALERT="Do you want to delete this Mobile Slider?";
 	public static final String PUSHNOTIFICATIONALERT="Message send successfully";
 	public static final String EMPTYSTRING="";
-	
+	public static final String DELIVERYCHARGE="₹250";
 	
 
 }

@@ -11,6 +11,7 @@
 			<class name="testCases.ManagePaymentMethodsTestCases" />
 			<class name="testCases.ManageContentPageTestCases" />
 			<class name="testCases.ManageDeliverBoyPageTestCases" />
+			<class name="ManageLocationPageTestCases" />
 		</classes>
 	</test>
 </suite>

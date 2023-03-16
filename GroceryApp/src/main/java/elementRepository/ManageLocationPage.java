@@ -2,6 +2,7 @@ package elementRepository;
 
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -19,14 +20,19 @@ public class ManageLocationPage {
 		PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(xpath="//table[@class='table table-bordered table-hover table-sm']//tbody//tr//td[3]")
+	@FindBy(xpath="//table[@class='table table-bordered table-hover table-sm']//tbody//tr//td[1]")
 	private List<WebElement> state;
 	
 	@FindBy(xpath="//table[@class='table table-bordered table-hover table-sm']//tbody//tr//td[4]")
 	private WebElement deliveryCharge;
 	
-	public boolean verifyingDeliveryCharge() {
-		return gu.getTableColumnValue(state, "Cabmridge");
+	public String verifyingDeliveryCharge() {
+		int index=0;
+		String locator=null;
+		index=gu.getTableLocatorValue(state, "Trivandrum");
+		locator="//table[@class='table table-bordered table-hover table-sm']//tbody//tr["+(index+1)+"]//td[4]";
+		WebElement deliveryCharge=driver.findElement(By.xpath(locator));
+		return deliveryCharge.getText();
 	}
 	
 
