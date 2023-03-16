@@ -1,5 +1,6 @@
 package elementRepository;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -132,7 +133,10 @@ public class DashboardPage {
 	}
 	
 	public void clickManageFooter() {
-		manageFooter.click();
+		JavascriptExecutor js = (JavascriptExecutor) driver;		//We use the Javascript interface to perform actions.
+		js.executeScript("window.scrollBy(0,3000)");
+		js.executeScript("arguments[0].click();", manageFooter);
+		//manageFooter.click();
 	}
 	
 	public void clickPushNotification() {
