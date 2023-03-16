@@ -26,13 +26,13 @@ public class ManageLocationPage {
 	@FindBy(xpath="//table[@class='table table-bordered table-hover table-sm']//tbody//tr//td[4]")
 	private WebElement deliveryCharge;
 	
-	public String verifyingDeliveryCharge() {
+	public boolean verifyingDeliveryCharge() {
 		int index=0;
 		String locator=null;
 		index=gu.getTableLocatorValue(state, "Trivandrum");
 		locator="//table[@class='table table-bordered table-hover table-sm']//tbody//tr["+(index+1)+"]//td[4]";
 		WebElement deliveryCharge=driver.findElement(By.xpath(locator));
-		return deliveryCharge.getText();
+		return gu.getExpectedResultAlert(deliveryCharge, "250");
 	}
 	
 

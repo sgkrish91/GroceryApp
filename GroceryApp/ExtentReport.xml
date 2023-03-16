@@ -12,6 +12,7 @@
 			<class name="testCases.ManageContentPageTestCases" />
 			<class name="testCases.ManageDeliverBoyPageTestCases" />
 			<class name="testCases.ManageLocationPageTestCases" />
+			<class name="testCases.MobileSliderPageTestCases" />
 		</classes>
 	</test>
 </suite>

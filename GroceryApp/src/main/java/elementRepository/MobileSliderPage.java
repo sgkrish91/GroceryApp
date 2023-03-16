@@ -35,15 +35,15 @@ public class MobileSliderPage {
 	@FindBy(xpath="//table[@class='table table-bordered table-hover table-sm']//tbody//tr[1]//td[1]")
 	private WebElement image;
 	
-	@FindBy(xpath="//a[@href='https://groceryapp.uniqassosiates.com/admin/Mobileslider/delete?del=478&page_ad=1']")
+	@FindBy(xpath="//table[@class='table table-bordered table-hover table-sm']//tbody//tr[1]//td[3]//a[2]")
 	private WebElement delete;
 	
 	public void clickNew() {
 		newButton.click();
 	}
 	
-	public void uploadImage() throws AWTException {
-		gu.fileUpload(driver, chooseFile, System.getProperty("user.dir") + "\\src\\main\\resources\\vegetables.jpg");
+	public void uploadImage(String location) throws AWTException {
+		gu.fileUpload(driver, chooseFile, System.getProperty("user.dir") + location);
 	}
 	
 	public void clickSave() {

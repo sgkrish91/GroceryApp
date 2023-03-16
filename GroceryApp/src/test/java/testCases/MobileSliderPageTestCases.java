@@ -29,7 +29,7 @@ public class MobileSliderPageTestCases extends BaseClass {
 	  dp.clickMobileSlider();
 	  ms=new MobileSliderPage(driver);
 	  ms.clickNew();
-	  ms.uploadImage();
+	  ms.uploadImage(Constant.UPLOADIMAGE);
 	  ms.clickSave();
 	  boolean actualResult=ms.getAlertText(Constant.MOBILESLIDERALERT);
 	  Assert.assertTrue(actualResult, Constant.ALERTERROR);
