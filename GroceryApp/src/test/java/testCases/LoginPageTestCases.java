@@ -6,6 +6,7 @@ import constant.Constant;
 import elementRepository.LoginPage;
 import utilities.DataProviderUtility;
 import utilities.ExcelRead;
+import utilities.RetryUtils;
 
 import java.io.IOException;
 
@@ -19,7 +20,7 @@ public class LoginPageTestCases extends BaseClass {//inheritance. We add the Bef
 	
 	LoginPage lp;
 	
-  @Test(groups = {"Sanity"} )
+  @Test(groups="Sanity", retryAnalyzer = RetryUtils.class)
   public void verifyTheTextOfSignInButton() {
 	  lp=new LoginPage(driver);
 	  String actualResult=lp.getTextOfSignInButton();
@@ -27,7 +28,7 @@ public class LoginPageTestCases extends BaseClass {//inheritance. We add the Bef
 	  Assert.assertEquals(actualResult, expectedResult, Constant.SIGNINBUTTONERROR);
   }
   
-  @Test(groups = {"Sanity"})
+  @Test(groups="Sanity", retryAnalyzer = RetryUtils.class)
   public void verifyWhetherRememberMeCheckboxIsSelected() {
 	  lp=new LoginPage(driver);
 	  boolean actualResult=lp.isRemembermeSelected();
@@ -35,7 +36,7 @@ public class LoginPageTestCases extends BaseClass {//inheritance. We add the Bef
 	  Assert.assertEquals(actualResult, expectedResult, Constant.CHECKBOXERROR);
   }
   
-  @Test(groups = {"Regression"} )
+  @Test(groups="Regression", retryAnalyzer = RetryUtils.class)
   public void verifyUserIsAbleToLoginWithValidCredentials() throws IOException {
 	  testBasic();
 	  lp=new LoginPage(driver);
@@ -49,7 +50,7 @@ public class LoginPageTestCases extends BaseClass {//inheritance. We add the Bef
 	  Assert.assertTrue(actualResult1, Constant.LOGINERROR);
   }
   
-  @Test(dataProvider ="dataProvider",dataProviderClass = DataProviderUtility.class, groups="Regression")
+  @Test(dataProvider ="dataProvider",dataProviderClass = DataProviderUtility.class, groups="Regression", retryAnalyzer = RetryUtils.class)
   public void verifyTheErrorMessageWhenLoginUsingInvalidCredentials(String user, String pass) {
 	  lp=new LoginPage(driver);
 	  lp.enterUsername(user);
@@ -59,7 +60,7 @@ public class LoginPageTestCases extends BaseClass {//inheritance. We add the Bef
 	  Assert.assertTrue(actualResult, Constant.ALERTERROR);
   }
   
-  @Test(groups = {"Sanity"})
+  @Test(groups="Sanity", retryAnalyzer = RetryUtils.class)
   public void verifyTheTextOfLoginPageTitle() {
 	  lp=new LoginPage(driver);
 	  String actualResult=lp.textOfTitle();
@@ -67,7 +68,7 @@ public class LoginPageTestCases extends BaseClass {//inheritance. We add the Bef
 	  Assert.assertEquals(actualResult, expectedResult, Constant.LOGINTITLE);
   }
   
-  @Test(groups = {"Sanity"})
+  @Test(groups="Sanity", retryAnalyzer = RetryUtils.class)
   public void verifyTheBackgroundColorOfSignInButton() {
 	  lp=new LoginPage(driver);
 	  String actualResult=lp.getSignInBackgroundColor();
@@ -75,12 +76,20 @@ public class LoginPageTestCases extends BaseClass {//inheritance. We add the Bef
 	  Assert.assertEquals(actualResult, expectedResult, Constant.BACKGROUNDCOLORERROR);
   }
   
-  @Test(groups="Sanity")
+  @Test(groups="Sanity", retryAnalyzer = RetryUtils.class)
   public void verifyWhetherUserIsPromptedToEnterTheUsernameIfTryingToLoginWithoutEnteringCredentials() {
 	  lp=new LoginPage(driver);
 	  lp.clickSignIn();
 	  boolean actualResult=lp.isUsernameEnabled();
 	  Assert.assertTrue(actualResult, Constant.USERNAMEERROR);
+  }
+  
+  @Test(groups="Functional", retryAnalyzer = RetryUtils.class)
+  public void verifyTheTextOfRememberMeLogin() {
+	  lp=new LoginPage(driver);
+	  String actualResult=lp.getTextOfRememberMeLabel();
+	  String expectedResult=Constant.REMEMBERMELABEL;
+	  Assert.assertEquals(actualResult, expectedResult, Constant.ALERTEXPECTEDRESULT);
   }
 
 }

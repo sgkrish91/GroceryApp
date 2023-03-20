@@ -11,6 +11,7 @@ import elementRepository.DashboardPage;
 import elementRepository.LoginPage;
 import elementRepository.MobileSliderPage;
 import utilities.ExcelRead;
+import utilities.RetryUtils;
 
 public class MobileSliderPageTestCases extends BaseClass {
 	
@@ -18,7 +19,7 @@ public class MobileSliderPageTestCases extends BaseClass {
 	DashboardPage dp;
 	MobileSliderPage ms;
 	
-  @Test
+  @Test(groups="Functional", retryAnalyzer = RetryUtils.class)
   public void verifyWhetherUserIsAbleToAddNewImage() throws IOException, AWTException {
 	  testBasic();
 	  lp=new LoginPage(driver);
@@ -39,7 +40,7 @@ public class MobileSliderPageTestCases extends BaseClass {
 	  
   }
   
-  @Test
+  @Test(groups="Functional", retryAnalyzer = RetryUtils.class)
   public void verifyTheAlertTextWhileClickingDeleteButtonInMobileSliderPage() throws IOException {
 	  testBasic();
 	  lp=new LoginPage(driver);

@@ -14,6 +14,7 @@ import constant.Constant;
 import elementRepository.DashboardPage;
 import elementRepository.LoginPage;
 import elementRepository.ManageProductPage;
+import utilities.RetryUtils;
 
 public class ManageProductPageTestCases extends BaseClass{
 	
@@ -21,7 +22,7 @@ public class ManageProductPageTestCases extends BaseClass{
 	DashboardPage dp;
 	ManageProductPage mp;
 	
-  @Test
+  @Test(groups="Functional", retryAnalyzer = RetryUtils.class)
   public void verifyWhetherProductsListedAreMatchingTheSearchCriteriaCategoryAndSubcategory() {
 	  
 	  lp=new LoginPage(driver);

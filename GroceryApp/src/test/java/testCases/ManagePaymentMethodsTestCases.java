@@ -10,6 +10,7 @@ import elementRepository.DashboardPage;
 import elementRepository.LoginPage;
 import elementRepository.ManagePaymentMethodsPage;
 import utilities.ExcelRead;
+import utilities.RetryUtils;
 
 public class ManagePaymentMethodsTestCases extends BaseClass{
 	
@@ -17,7 +18,7 @@ public class ManagePaymentMethodsTestCases extends BaseClass{
 	DashboardPage dp;
 	ManagePaymentMethodsPage mp;
 	
-  @Test(groups="Sanity")
+  @Test(groups="Sanity", retryAnalyzer = RetryUtils.class)
   public void verifyWhetherUserIsAbleToIncreaseTheLimitOfUPIPayment() throws IOException {
 	  testBasic();
 	  lp=new LoginPage(driver);

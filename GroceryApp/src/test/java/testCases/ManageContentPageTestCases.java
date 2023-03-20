@@ -10,6 +10,7 @@ import elementRepository.DashboardPage;
 import elementRepository.LoginPage;
 import elementRepository.ManageContentPage;
 import utilities.ExcelRead;
+import utilities.RetryUtils;
 
 public class ManageContentPageTestCases extends BaseClass {
 	
@@ -17,7 +18,7 @@ public class ManageContentPageTestCases extends BaseClass {
 	DashboardPage dp;
 	ManageContentPage mc;
 	
-  @Test
+  @Test(groups="Functional", retryAnalyzer = RetryUtils.class)
   public void verifyWhetherUserIsAbleToEditPageDetailsOfExistingTitle() throws IOException {
 	  testBasic();
 	  lp=new LoginPage(driver);

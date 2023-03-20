@@ -47,6 +47,9 @@ public class LoginPage {
 	@FindBy(xpath="//a[@class='nav-link']//img")
 	private WebElement admin;
 	
+	@FindBy(xpath="//label[@for='remember']")
+	private WebElement rememberMeLabel;
+	
 	
 	
 	public String getTextOfSignInButton() {
@@ -75,7 +78,7 @@ public class LoginPage {
 	
 	public boolean getErrorMessage(String text) {
 		String actual= gu.getElementText(error);
-		return text.contains(text);
+		return actual.contains(text);
 	}
 	
 	public String textOfTitle() {
@@ -92,6 +95,10 @@ public class LoginPage {
 	
 	public boolean isUsernameEnabled() {
 		return username.isEnabled();
+	}
+	
+	public String getTextOfRememberMeLabel() {
+		return gu.getElementText(rememberMeLabel);
 	}
 	
 	

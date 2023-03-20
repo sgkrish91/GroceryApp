@@ -13,6 +13,7 @@ import elementRepository.AdminUsersPage;
 import elementRepository.DashboardPage;
 import elementRepository.LoginPage;
 import utilities.ExcelRead;
+import utilities.RetryUtils;
 
 public class AdminUsersTestCases extends BaseClass {
 
@@ -20,7 +21,7 @@ public class AdminUsersTestCases extends BaseClass {
 	DashboardPage dp;
 	AdminUsersPage au;
 
-	@Test
+	@Test(groups="Functional", retryAnalyzer = RetryUtils.class)
 	public void verifyWhetherAdminUsersTableListsUsersAccordingToSearchCriteria() throws IOException {
 		lp = new LoginPage(driver);
 		lp.enterUsername(ExcelRead.readStringData(prop.getProperty("LoginExcel"), Constant.SHEETINEXCEL, 1, 0));
@@ -38,7 +39,7 @@ public class AdminUsersTestCases extends BaseClass {
 
 	}
 
-	@Test
+	@Test(groups="Sanity", retryAnalyzer = RetryUtils.class)
 	public void verifyTheStatusOfUser() {
 		lp = new LoginPage(driver);
 		lp.enterUsername(Constant.LOGINUSER);
@@ -53,7 +54,7 @@ public class AdminUsersTestCases extends BaseClass {
 
 	}
 
-	@Test
+	@Test(groups="Regression", retryAnalyzer = RetryUtils.class)
 	public void verifyWhetherStatusOfAUserCanBeChanged() {
 		lp = new LoginPage(driver);
 		lp.enterUsername(Constant.LOGINUSER);
@@ -67,7 +68,7 @@ public class AdminUsersTestCases extends BaseClass {
 		Assert.assertTrue(actualResult, Constant.ALERTERROR);
 	}
 	
-	@Test
+	@Test(groups="Functional", retryAnalyzer = RetryUtils.class)
 	public void verifyAlertMessageWhenNewUserIsAdded() {
 		lp = new LoginPage(driver);
 		lp.enterUsername(Constant.LOGINUSER);

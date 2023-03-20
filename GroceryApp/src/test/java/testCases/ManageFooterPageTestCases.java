@@ -10,6 +10,7 @@ import elementRepository.DashboardPage;
 import elementRepository.LoginPage;
 import elementRepository.ManageFooterPage;
 import utilities.ExcelRead;
+import utilities.RetryUtils;
 
 public class ManageFooterPageTestCases extends BaseClass{
 	
@@ -17,7 +18,7 @@ public class ManageFooterPageTestCases extends BaseClass{
 	DashboardPage dp;
 	ManageFooterPage mf;
 	
-  @Test
+  @Test(groups="Functional", retryAnalyzer = RetryUtils.class)
   public void verifyTheFunctionalityOfResetButtonWhileEditingFooterText() throws IOException {
 	  testBasic();
 	  lp=new LoginPage(driver);

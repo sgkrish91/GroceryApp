@@ -42,5 +42,12 @@ public class Constant {
 	public static final String EMPTYSTRING="";
 	public static final String DELIVERYCHARGE="250";
 	public static final String UPLOADIMAGE="\\src\\main\\resources\\UploadFiles\\vegetables.jpg";
+	public static final String DELIVERYBOYUSERNAME="Trudie05";
+	public static final String STATUSINACTIVE="Inactive";
+	public static final String DELIVERYBOYNAME="Trudie";
+	public static final String REMEMBERMELABEL="Remember Me";
+	public static final String MANAGEDELIVERYBOYTITLE="List Delivery Boy";
+	public static final String MOBILESLIDERTITLE="List Mobile Sliders";
+	
 
 }

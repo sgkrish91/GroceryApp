@@ -74,6 +74,12 @@ public class DashboardPage {
 	@FindBy(xpath="(//a[@href='https://groceryapp.uniqassosiates.com/admin/list-deliveryboy'])[1]")
 	private WebElement manageDeliveryBoy;
 	
+	@FindBy(xpath="//h1[@class='m-0 text-dark']")
+	private WebElement manageDeliveryBoyTitle;
+	
+	@FindBy(xpath="//h1[@class='m-0 text-dark']")
+	private WebElement mobileSliderTitle;
+	
 	public void clickAdmin() {
 		ew.presenceOfElementExplicitWait(driver, "//a[@data-toggle='dropdown']");
 		admin.click();
@@ -145,6 +151,14 @@ public class DashboardPage {
 	
 	public void clickManageDeliveryBoy() {
 		manageDeliveryBoy.click();
+	}
+	
+	public String getManageDeliveryBoyTitle() {
+		return gu.getElementText(manageDeliveryBoyTitle);
+	}
+	
+	public String getMobileSliderTitle() {
+		return gu.getElementText(mobileSliderTitle);
 	}
 
 }

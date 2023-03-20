@@ -10,6 +10,7 @@ import elementRepository.DashboardPage;
 import elementRepository.LoginPage;
 import elementRepository.ManageLocationPage;
 import utilities.ExcelRead;
+import utilities.RetryUtils;
 
 public class ManageLocationPageTestCases extends BaseClass {
 	
@@ -17,7 +18,7 @@ public class ManageLocationPageTestCases extends BaseClass {
 	DashboardPage dp;
 	ManageLocationPage ml;
 	
-  @Test
+  @Test(groups="Sanity", retryAnalyzer = RetryUtils.class)
   public void verifyTheDeliveryChargeOfLocationTrivandrum() throws IOException {
 	  testBasic();
 	  lp=new LoginPage(driver);

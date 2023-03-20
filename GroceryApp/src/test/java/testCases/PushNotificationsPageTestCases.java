@@ -10,6 +10,7 @@ import elementRepository.DashboardPage;
 import elementRepository.LoginPage;
 import elementRepository.PushNotificationsPage;
 import utilities.ExcelRead;
+import utilities.RetryUtils;
 
 public class PushNotificationsPageTestCases extends BaseClass{
 	
@@ -17,7 +18,7 @@ public class PushNotificationsPageTestCases extends BaseClass{
 	DashboardPage dp;
 	PushNotificationsPage pn;
 	
-  @Test(groups="Regression")
+  @Test(groups="Regression", retryAnalyzer = RetryUtils.class)
   public void verifyWhetherUserIsAbleToSendPushNotifications() throws IOException {
 	  testBasic();
 	  lp=new LoginPage(driver);
@@ -34,7 +35,7 @@ public class PushNotificationsPageTestCases extends BaseClass{
 	  Assert.assertTrue(actualResult, Constant.ALERTERROR);
   }
   
-  @Test(groups="Sanity")
+  @Test(groups="Sanity", retryAnalyzer = RetryUtils.class)
   public void verifyWhetherUserIsAbleToClearTheDataEnteredInTitleTextboxWhileClickingResetButton() throws IOException {
 	  testBasic();
 	  lp=new LoginPage(driver);

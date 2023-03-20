@@ -12,6 +12,7 @@ import constant.Constant;
 import elementRepository.DashboardPage;
 import elementRepository.LoginPage;
 import elementRepository.ManageCategoryPage;
+import utilities.RetryUtils;
 
 public class ManageCategoryPageTestCases extends BaseClass{
 	
@@ -19,7 +20,7 @@ public class ManageCategoryPageTestCases extends BaseClass{
 	DashboardPage dp;
 	ManageCategoryPage mc;
 	
-  @Test
+  @Test(groups="Functional", retryAnalyzer = RetryUtils.class)
   public void verifyWhetherUserIsAbleToAddNewCategoryInManageCategoryPage() throws AWTException, IOException {
 	  testBasic();
 	  lp=new LoginPage(driver);
@@ -40,7 +41,7 @@ public class ManageCategoryPageTestCases extends BaseClass{
 	 
   }
   
-  @Test
+  @Test(groups="Functional", retryAnalyzer = RetryUtils.class)
   public void verifyTheTextOfAlertWhileClickingDeleteButtonInSubCategoryTable() {
 	  
 	  lp=new LoginPage(driver);
