@@ -34,7 +34,7 @@ public class ManageDeliveryBoyPage {
 	
 	public String getTextOfUsername(String name) {
 		int index=gu.getTableLocatorValue(listDeliveryBoy, name);
-		String locator="//table[@class='table table-bordered table-hover table-sm']//tbody//tr["+(index+2)+"]//td[5]";
+		String locator="//table[@class='table table-bordered table-hover table-sm']//tbody//tr["+(index+1)+"]//td[5]";
 		WebElement username=driver.findElement(By.xpath(locator));
 		return gu.getElementText(username);
 	}

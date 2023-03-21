@@ -20,7 +20,7 @@ public class ManageCategoryPageTestCases extends BaseClass{
 	DashboardPage dp;
 	ManageCategoryPage mc;
 	
-  @Test(groups="Functional", retryAnalyzer = RetryUtils.class)
+  @Test(groups="Functional")
   public void verifyWhetherUserIsAbleToAddNewCategoryInManageCategoryPage() throws AWTException, IOException {
 	  testBasic();
 	  lp=new LoginPage(driver);
@@ -41,7 +41,7 @@ public class ManageCategoryPageTestCases extends BaseClass{
 	 
   }
   
-  @Test(groups="Functional", retryAnalyzer = RetryUtils.class)
+  @Test(groups="Functional")
   public void verifyTheTextOfAlertWhileClickingDeleteButtonInSubCategoryTable() {
 	  
 	  lp=new LoginPage(driver);

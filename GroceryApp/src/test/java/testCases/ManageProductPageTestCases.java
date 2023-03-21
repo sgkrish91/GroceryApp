@@ -22,7 +22,7 @@ public class ManageProductPageTestCases extends BaseClass{
 	DashboardPage dp;
 	ManageProductPage mp;
 	
-  @Test(groups="Functional", retryAnalyzer = RetryUtils.class)
+  @Test(groups="Functional")
   public void verifyWhetherProductsListedAreMatchingTheSearchCriteriaCategoryAndSubcategory() {
 	  
 	  lp=new LoginPage(driver);
