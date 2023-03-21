@@ -1,0 +1,11 @@
+<suite name="MyTestSuite" parallel="methods" thread-count="7">
+	<listeners>
+		<listener class-name="utilities.ExtentReportUtils" />
+	</listeners>
+	<test name="Sanity">
+		<parameter name="browser" value="Chrome"></parameter>
+		<classes>
+			<class name="testCases.LoginPageTestCases" />
+		</classes>
+	</test>
+</suite>
