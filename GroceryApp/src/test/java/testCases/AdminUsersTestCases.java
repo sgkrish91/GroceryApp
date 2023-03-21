@@ -7,7 +7,6 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import constant.AdminUsersConstant;
 import constant.Constant;
 import elementRepository.AdminUsersPage;
 import elementRepository.DashboardPage;
