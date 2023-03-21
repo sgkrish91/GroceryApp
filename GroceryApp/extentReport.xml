@@ -10,7 +10,6 @@
 			<class name="testCases.PushNotificationsPageTestCases" />
 			<class name="testCases.ManagePaymentMethodsTestCases" />
 			<class name="testCases.ManageContentPageTestCases" />
-			<class name="testCases.ManageDeliverBoyPageTestCases" />
 			<class name="testCases.ManageLocationPageTestCases" />
 			<class name="testCases.MobileSliderPageTestCases" />
 			<class name="testCases.AdminUsersTestCases" />

@@ -63,7 +63,7 @@
 				<version>3.0.0-M5</version>
 				<configuration>
 					<suiteXmlFiles>
-						<suiteXmlFile>ExtentReport.xml</suiteXmlFile>
+						<suiteXmlFile>extentReport.xml</suiteXmlFile>
 					</suiteXmlFiles>
 				</configuration>
 			</plugin>
