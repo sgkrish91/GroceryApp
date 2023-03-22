@@ -23,9 +23,6 @@ public class ExtentReportUtils implements ITestListener {
 	ExtentTest test;
 
 	public void configureReport() {
-		Date date = new Date();
-		SimpleDateFormat formatter = new SimpleDateFormat("ddMMyyyy_hhmmss");
-		String strDate = formatter.format(date);
 
 		File reportPath = new File(System.getProperty("user.dir") + "//ExtentReport");
 
@@ -35,14 +32,13 @@ public class ExtentReportUtils implements ITestListener {
 
 		// create file
 		sparkReporter = new ExtentSparkReporter(
-				System.getProperty("user.dir") + "//ExtentReport//" + "ExtentReport_" + strDate + ".html");
+				System.getProperty("user.dir") + "//ExtentReport//" + "ExtentReport.html");
 		reports = new ExtentReports();
 		reports.attachReporter(sparkReporter);
 
 		// System details
 		reports.setSystemInfo("PC Name", System.getenv("COMPUTERNAME"));
 		reports.setSystemInfo("OS", System.getProperty("os.name"));
-		reports.setSystemInfo("Browser", "Chrome");
 		sparkReporter.config().setDocumentTitle("Extent Report Sample");
 		sparkReporter.config().setReportName("Report Summary");
 		sparkReporter.config().setTheme(Theme.DARK);

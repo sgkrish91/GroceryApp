@@ -60,17 +60,6 @@ public class GeneralUtilities {
 		return value;
 	}
 	
-	/*public boolean verifyTableColumnElements(List<WebElement> element, String text, WebElement element2, String text2) {
-		boolean value=true;
-		for(int i=0;i<element.size();i++) {
-			if(element.get(i).equals(text)) {
-				if(!element2.getText().equals(text2)) {
-					value=false;
-				}
-			}
-		}
-		return value;
-	}*/
 	
 	public int getTableLocatorValue(List<WebElement> element, String text) {
 		int index=0;

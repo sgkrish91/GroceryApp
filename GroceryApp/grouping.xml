@@ -6,8 +6,8 @@
 		<parameter name="browser" value="Chrome"></parameter>
 		<groups>
 			<run>
-				<include name="Critical"></include>
-				<include name="High"></include>
+				<include name="Sanity"></include>
+				<include name="Regression"></include>
 			</run>
 		</groups>
 		<classes>
