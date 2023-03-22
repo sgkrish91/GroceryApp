@@ -41,6 +41,7 @@ public class ManageFooterPage {
 	}
 	
 	public void clickReset() {
+		ew.elementToBeClickableExplicitWait(driver, reset);
 		reset.click();
 	}
 	
