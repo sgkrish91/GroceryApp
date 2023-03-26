@@ -16,7 +16,6 @@ public class AdminUsersPage {
 	
 	WebDriver driver;
 	GeneralUtilities gu=new GeneralUtilities();
-	RandomDataGenerator rd=new RandomDataGenerator();
 	
 	public AdminUsersPage(WebDriver driver) {
 		this.driver=driver;
@@ -57,7 +56,7 @@ public class AdminUsersPage {
 	private WebElement saveButton;
 	
 	public void clickSearch() {
-		search.click();
+		gu.clickAButton(search);
 	}
 	
 	public void selectUserType() {
@@ -65,7 +64,7 @@ public class AdminUsersPage {
 	}
 	
 	public void clickSearchInList() {
-		searchList.click();
+		gu.clickAButton(searchList);
 	}
 	
 	public boolean verifyUserType() {
@@ -83,7 +82,7 @@ public class AdminUsersPage {
 		int index=gu.getTableLocatorValue(status, "arun123");
 		String locator="//table[@class='table table-bordered table-hover table-sm']//tbody//tr["+(index+1)+"]//td[3]//a";
 		WebElement statusDetails = driver.findElement(By.xpath(locator));
-		statusDetails.click();
+		gu.clickAButton(statusDetails);
 	}
 	
 	public boolean getTextOfAlert(String text) {
@@ -92,16 +91,15 @@ public class AdminUsersPage {
 	}
 	
 	public void enterUsername(String user) {
-		String randomString=rd.randomPassword();
-		username.sendKeys(user+randomString);
+		gu.enterRandomUsername(username, user);
 	}
 	
 	public void enterPassword(String pass) {
-		password.sendKeys(pass);
+		gu.enterTextInElement(password, pass);
 	}
 	
 	public void clickNew() {
-		newButton.click();
+		gu.clickAButton(newButton);
 	}
 	
 	public void selectUser() {
@@ -109,7 +107,7 @@ public class AdminUsersPage {
 	}
 	
 	public void clickSave() {
-		saveButton.click();
+		gu.clickAButton(saveButton);
 	}
 	
 	public boolean getAlertText(String text) {

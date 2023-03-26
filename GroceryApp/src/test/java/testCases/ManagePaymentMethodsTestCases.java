@@ -17,13 +17,17 @@ public class ManagePaymentMethodsTestCases extends BaseClass{
 	LoginPage lp;
 	DashboardPage dp;
 	ManagePaymentMethodsPage mp;
+	ExcelRead er=new ExcelRead();
 	
   @Test(groups="Sanity", retryAnalyzer = RetryUtils.class)
-  public void verifyWhetherUserIsAbleToIncreaseTheLimitOfUPIPayment() throws IOException {
-	  testBasic();
+  public void verifyWhetherUserIsAbleToIncreaseTheLimitOfUPIPayment() {
 	  lp=new LoginPage(driver);
-	  lp.enterUsername(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 0));
-	  lp.enterPassword(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 1));
+	  try {
+		lp.enterUsername(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 0));
+		lp.enterPassword(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 1));
+	} catch (IOException e) {
+		System.out.println("Exception handled " + e);
+	}
 	  lp.clickSignIn();
 	  dp=new DashboardPage(driver);
 	  dp.clickManagePaymentMethod();
@@ -31,11 +35,14 @@ public class ManagePaymentMethodsTestCases extends BaseClass{
 	  mp.clickEditButton();
 	  mp.enterLimitValue();
 	  mp.clickUpdate();
-	  boolean actualResult=mp.getAlertText(Constant.PAYMENTLIMITUPDATEALERT);
-	  Assert.assertTrue(actualResult, Constant.ALERTERROR);
+	  try {
+	  boolean actualResult=mp.getAlertText(er.readStringData(prop.getProperty("DataProviderExcel"), prop.getProperty("ExpectedResultSheet"), 31, 1));
+	  Assert.assertTrue(actualResult, er.readStringData(prop.getProperty("DataProviderExcel"), prop.getProperty("ExpectedResultSheet"), 3, 1));
 	  String actualResult1=mp.checkUpdatedLimitValue();
 	  String expectedResult1="20000";
-	  Assert.assertEquals(actualResult1, expectedResult1, Constant.ALERTERROR);
-	  
+	  Assert.assertEquals(actualResult1, expectedResult1, er.readStringData(prop.getProperty("DataProviderExcel"), prop.getProperty("ExpectedResultSheet"), 3, 1));
+	} catch (IOException e) {
+		System.out.println("Exception handled " + e);
+		}
   }
 }

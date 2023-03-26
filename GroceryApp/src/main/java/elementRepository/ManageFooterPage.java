@@ -8,14 +8,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import utilities.ExplicitWait;
+import utilities.WaitUtility;
 import utilities.GeneralUtilities;
 
 public class ManageFooterPage {
 	
 	WebDriver driver;
 	GeneralUtilities gu=new GeneralUtilities();
-	ExplicitWait ew=new ExplicitWait();
+	WaitUtility ew=new WaitUtility();
 	
 	public ManageFooterPage(WebDriver driver) {
 		this.driver=driver;
@@ -37,12 +37,12 @@ public class ManageFooterPage {
 		index=gu.getTableLocatorValue(footerTable, "varkala");
 		locator="//table[@class='table table-bordered table-hover table-sm']//tbody//tr["+(index+1)+"]//td[4]//a";
 		WebElement edit=driver.findElement(By.xpath(locator));
-		edit.click();
+		gu.clickAButton(edit);
 	}
 	
 	public void clickReset() {
 		ew.elementToBeClickableExplicitWait(driver, reset);
-		reset.click();
+		gu.clickAButton(reset);
 	}
 	
 	public String getURLOfPage() {

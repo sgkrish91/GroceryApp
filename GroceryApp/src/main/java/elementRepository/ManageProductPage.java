@@ -8,14 +8,14 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import net.bytebuddy.agent.builder.AgentBuilder.RedefinitionStrategy.DiscoveryStrategy.Explicit;
-import utilities.ExplicitWait;
+import utilities.WaitUtility;
 import utilities.GeneralUtilities;
 
 public class ManageProductPage {
 	
 	WebDriver driver;
 	GeneralUtilities gu=new GeneralUtilities();
-	ExplicitWait ew=new ExplicitWait();
+	WaitUtility ew=new WaitUtility();
 	
 	public ManageProductPage(WebDriver driver) {
 		this.driver=driver;
@@ -41,7 +41,7 @@ public class ManageProductPage {
 	private List<WebElement> tableCategory;
 	
 	public void clickSearch() {
-		search.click();
+		gu.clickAButton(search);
 	}
 	
 	public void selectCategory() {
@@ -55,7 +55,7 @@ public class ManageProductPage {
 	}
 	
 	public void clickSearchInList() {
-		searchList.click();
+		gu.clickAButton(searchList);
 	}
 	
 	public boolean verifyCategoryInTable() {

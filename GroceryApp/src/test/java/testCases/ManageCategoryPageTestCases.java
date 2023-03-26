@@ -12,6 +12,7 @@ import constant.Constant;
 import elementRepository.DashboardPage;
 import elementRepository.LoginPage;
 import elementRepository.ManageCategoryPage;
+import utilities.ExcelRead;
 import utilities.RetryUtils;
 
 public class ManageCategoryPageTestCases extends BaseClass{
@@ -19,10 +20,10 @@ public class ManageCategoryPageTestCases extends BaseClass{
 	LoginPage lp;
 	DashboardPage dp;
 	ManageCategoryPage mc;
+	ExcelRead er=new ExcelRead();
 	
   @Test(groups="Functional")
-  public void verifyWhetherUserIsAbleToAddNewCategoryInManageCategoryPage() throws AWTException, IOException {
-	  testBasic();
+  public void verifyWhetherUserIsAbleToAddNewCategoryInManageCategoryPage() {
 	  lp=new LoginPage(driver);
 	  lp.enterUsername(Constant.LOGINUSER);
 	  lp.enterPassword(Constant.LOGINPASSWORD);
@@ -34,16 +35,23 @@ public class ManageCategoryPageTestCases extends BaseClass{
 	  mc.clickNewButton();
 	  mc.selectCategoryName();
 	  mc.enterSubCategoryName();
-	  mc.uploadImage(prop.getProperty("ImageUpload"));
+	  try {
+		mc.uploadImage(prop.getProperty("ImageUpload"));
+	} catch (AWTException e) {
+		System.out.println("Exception handled " + e);
+	}
 	  mc.clickSaveButton();
-	  boolean actualResult=mc.getAlertText(Constant.NEWCATEGORYALERT);
-	  Assert.assertTrue(actualResult, Constant.SUBCATEGORYUPDATEERROR);
-	 
+	  boolean actualResult;
+	try {
+		actualResult = mc.getAlertText(er.readStringData(prop.getProperty("DataProviderExcel"), prop.getProperty("ExpectedResultSheet"), 20, 1));
+		Assert.assertTrue(actualResult, er.readStringData(prop.getProperty("DataProviderExcel"), prop.getProperty("ExpectedResultSheet"), 21, 1));
+	} catch (IOException e) {
+		System.out.println("Exception handled " + e);
+	} 
   }
   
   @Test(groups="Functional")
   public void verifyTheTextOfAlertWhileClickingDeleteButtonInSubCategoryTable() {
-	  
 	  lp=new LoginPage(driver);
 	  lp.enterUsername(Constant.LOGINUSER);
 	  lp.enterPassword(Constant.LOGINPASSWORD);
@@ -54,8 +62,12 @@ public class ManageCategoryPageTestCases extends BaseClass{
 	  mc=new ManageCategoryPage(driver);
 	  mc.getLocatorToDelete();
 	  String actualResult=mc.getDeleteAlertText();
-	  String expectedResult=Constant.DELETESUBCATALERT;
-	  Assert.assertEquals(actualResult, expectedResult, Constant.ALERTERROR);
+	  try {
+	  String expectedResult=er.readStringData(prop.getProperty("DataProviderExcel"), prop.getProperty("ExpectedResultSheet"), 22, 1);
+		Assert.assertEquals(actualResult, expectedResult, er.readStringData(prop.getProperty("DataProviderExcel"), prop.getProperty("ExpectedResultSheet"), 3, 1));
+	} catch (IOException e) {
+		System.out.println("Exception handled " + e);
+	}
 	  
   }
 }

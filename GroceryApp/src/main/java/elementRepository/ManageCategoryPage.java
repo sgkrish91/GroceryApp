@@ -43,7 +43,7 @@ public class ManageCategoryPage {
 	private List<WebElement> listSubCategory;
 	
 	public void clickNewButton() {
-		newButton.click();
+		gu.clickAButton(newButton);
 	}
 	
 	public void selectCategoryName() {
@@ -51,7 +51,7 @@ public class ManageCategoryPage {
 	}
 	
 	public void enterSubCategoryName() {
-		subCategory.sendKeys("GreenVegetables");
+		gu.enterTextInElement(subCategory, "GreenVegetables");
 	}
 	
 	public void uploadImage(String text) throws AWTException {
@@ -59,7 +59,7 @@ public class ManageCategoryPage {
 	}
 	
 	public void clickSaveButton() {
-		saveButton.click();
+		gu.clickAButton(saveButton);
 	}
 	
 	public boolean getAlertText(String text) {
@@ -70,7 +70,7 @@ public class ManageCategoryPage {
 		int index=gu.getTableLocatorValue(listSubCategory, "abcd");
 		String locator="//table[@class='table table-bordered table-hover table-sm']//tr["+(index+1)+"]//td[5]//a[2]//i";
 		WebElement deleteButton=driver.findElement(By.xpath(locator));
-		deleteButton.click();
+		gu.clickAButton(deleteButton);
 	}
 	
 	public String getDeleteAlertText() {

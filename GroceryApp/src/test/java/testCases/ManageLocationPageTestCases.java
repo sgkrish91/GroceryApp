@@ -17,18 +17,26 @@ public class ManageLocationPageTestCases extends BaseClass {
 	LoginPage lp;
 	DashboardPage dp;
 	ManageLocationPage ml;
+	ExcelRead er=new ExcelRead();
 	
   @Test(groups="Sanity", retryAnalyzer = RetryUtils.class)
-  public void verifyTheDeliveryChargeOfLocationTrivandrum() throws IOException {
-	  testBasic();
+  public void verifyTheDeliveryChargeOfLocationTrivandrum() {
 	  lp=new LoginPage(driver);
-	  lp.enterUsername(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 0));
-	  lp.enterPassword(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 1));
+	  try {
+		lp.enterUsername(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 0));
+		lp.enterPassword(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 1));
+	} catch (IOException e) {
+		System.out.println("Exception handled " + e);
+	}
 	  lp.clickSignIn();
 	  dp=new DashboardPage(driver);
 	  dp.clickManageLocation();
 	  ml=new ManageLocationPage(driver);
 	  boolean actualResult=ml.verifyingDeliveryCharge();
-	  Assert.assertTrue(actualResult, Constant.ERRORINDELIVERYCHARGE);
+	  try {
+		Assert.assertTrue(actualResult, er.readStringData(prop.getProperty("DataProviderExcel"), prop.getProperty("ExpectedResultSheet"), 30, 1));
+	} catch (IOException e) {
+		System.out.println("Exception handled " + e);
+	}
   }
 }

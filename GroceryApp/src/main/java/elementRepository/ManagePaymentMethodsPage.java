@@ -39,18 +39,17 @@ public class ManagePaymentMethodsPage {
 		int index=gu.getTableLocatorValue(action, "UPI");
 		String locator="//table[@class='table table-bordered table-hover table-sm']//tbody//tr["+(index+1)+"]//td[4]//a";
 		WebElement edit=driver.findElement(By.xpath(locator));
-		edit.click();
+		gu.clickAButton(edit);
 	}
 	
 	public void enterLimitValue() {
 		WebDriverWait obj=new WebDriverWait(driver, Duration.ofMillis(5000));		
 		obj.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@id='limit']")));
-		limit.clear();
-		limit.sendKeys("20000");
+		gu.clearTextFieldAndEnterNewData(limit, "20000");
 	}
 	
 	public void clickUpdate() {
-		update.click();
+		gu.clickAButton(update);
 	}
 	
 	public boolean getAlertText(String text) {

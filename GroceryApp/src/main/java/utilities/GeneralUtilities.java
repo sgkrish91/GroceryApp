@@ -7,12 +7,16 @@ import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.util.List;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 public class GeneralUtilities {
+	
+	RandomDataGenerator rd=new RandomDataGenerator();
 		
 	public String getElementText(WebElement element) {
 		String text=element.getText();
@@ -98,6 +102,37 @@ public class GeneralUtilities {
 	public void presenceOfElement(WebElement element) {
 		boolean value;
 		
+	}
+	
+	public void clickAButton(WebElement element) {
+		element.click();
+	}
+	
+	public void enterRandomUsername(WebElement element, String user) {
+		String randomString=rd.randomPassword();
+		element.sendKeys(user+randomString);
+	}
+	
+	public void enterTextInElement(WebElement element, String text) {
+		element.sendKeys(text);
+	}
+	
+	public void clickElementUsingJavascript(WebDriver driver, WebElement element) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;		
+		js.executeScript("window.scrollBy(0,3000)");
+		js.executeScript("arguments[0].click();", element);
+	}
+	
+	public boolean checkIfElementIsDisplayed(WebElement element) {
+		return element.isDisplayed();
+	}
+	
+	public boolean checkIfElementIsEnabled(WebElement element) {
+		return element.isEnabled();
+	}
+	
+	public void clearTextInElement(WebElement element) {
+		element.clear();
 	}
 
 }

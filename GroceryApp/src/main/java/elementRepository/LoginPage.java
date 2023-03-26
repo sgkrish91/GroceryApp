@@ -12,14 +12,14 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import utilities.ExcelRead;
-import utilities.ExplicitWait;
+import utilities.WaitUtility;
 import utilities.GeneralUtilities;
 
 public class LoginPage {
 	
 	WebDriver driver;
 	GeneralUtilities gu=new GeneralUtilities();
-	ExplicitWait ew=new ExplicitWait();
+	WaitUtility ew=new WaitUtility();
 	
 	public LoginPage(WebDriver driver) {
 		this.driver=driver;
@@ -53,7 +53,7 @@ public class LoginPage {
 	
 	
 	public String getTextOfSignInButton() {
-		return gu.getElementText(signInButton);		//We have defined the functionality of getting the text of Sign in button in GeneralUtilities.
+		return gu.getElementText(signInButton);		
 	}
 	
 	public boolean isRemembermeSelected() {
@@ -61,15 +61,15 @@ public class LoginPage {
 	}
 	
 	public void enterUsername(String user) {
-		username.sendKeys(user);
+		gu.enterTextInElement(username, user);
 	}
 	
 	public void enterPassword(String pass) {
-		password.sendKeys(pass);
+		gu.enterTextInElement(password, pass);
 	}
 	
 	public void clickSignIn() {
-		signInButton.click();
+		gu.clickAButton(signInButton);
 	}
 	
 	public String URLAfterSignIn() {
@@ -77,8 +77,7 @@ public class LoginPage {
 	}
 	
 	public boolean getErrorMessage(String text) {
-		String actual= gu.getElementText(error);
-		return actual.contains(text);
+		return gu.getExpectedResultAlert(error, text);
 	}
 	
 	public String textOfTitle() {
@@ -90,11 +89,11 @@ public class LoginPage {
 	}
 	
 	public boolean isAdminDisplayed() {
-		return admin.isDisplayed();
+		return gu.checkIfElementIsDisplayed(admin);
 	}
 	
 	public boolean isUsernameEnabled() {
-		return username.isEnabled();
+		return gu.checkIfElementIsEnabled(username);
 	}
 	
 	public String getTextOfRememberMeLabel() {

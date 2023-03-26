@@ -17,27 +17,41 @@ public class ManageDeliverBoyPageTestCases extends BaseClass {
 	LoginPage lp;
 	DashboardPage dp;
 	ManageDeliveryBoyPage md;
+	ExcelRead er=new ExcelRead();
 	
   @Test(groups="Functional", retryAnalyzer = RetryUtils.class)
-  public void verifyTheUsernameOfADeliveryBoy() throws IOException {
+  public void verifyTheUsernameOfADeliveryBoy() {
 	  lp=new LoginPage(driver);
-	  lp.enterUsername(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 0));
-	  lp.enterPassword(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 1));
+	  try {
+		lp.enterUsername(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 0));
+		lp.enterPassword(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 1));
+	} catch (IOException e) {
+		System.out.println("Exception handled " + e);
+	}
 	  lp.clickSignIn();
 	  dp=new DashboardPage(driver);
 	  dp.clickManageDeliveryBoy();
 	  md=new ManageDeliveryBoyPage(driver);
 	  String actualResult=md.getTextOfUsername(Constant.DELIVERYBOYNAME);
-	  String expectedResult=Constant.DELIVERYBOYUSERNAME;
-	  Assert.assertEquals(actualResult, expectedResult, Constant.EXPECTEDTEXTERROR);
+	  String expectedResult;
+	try {
+		expectedResult = er.readStringData(prop.getProperty("DataProviderExcel"), prop.getProperty("ExpectedResultSheet"), 25, 1);
+		Assert.assertEquals(actualResult, expectedResult, er.readStringData(prop.getProperty("DataProviderExcel"), prop.getProperty("ExpectedResultSheet"), 26, 1));
+	} catch (IOException e) {
+		System.out.println("Exception handled " + e);
+	}
+	  
   }
   
   @Test(groups="Functional", retryAnalyzer = RetryUtils.class)
-  public void verifyTheFunctionalityOfResetButton() throws IOException {
-	  testBasic();
+  public void verifyTheFunctionalityOfResetButton() {
 	  lp=new LoginPage(driver);
-	  lp.enterUsername(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 0));
-	  lp.enterPassword(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 1));
+	  try {
+		lp.enterUsername(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 0));
+		lp.enterPassword(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 1));
+	} catch (IOException e) {
+		System.out.println("Exception handled " + e);
+	}
 	  lp.clickSignIn();
 	  dp=new DashboardPage(driver);
 	  dp.clickManageDeliveryBoy();
@@ -47,22 +61,34 @@ public class ManageDeliverBoyPageTestCases extends BaseClass {
 	  md.clickReset();
 	  boolean actualResult=md.presenceOfUsername();
 	  boolean expectedResult=false;
-	  Assert.assertEquals(actualResult, expectedResult, Constant.ELEMENTPRESENCEERROR);
+	  try {
+		Assert.assertEquals(actualResult, expectedResult, er.readStringData(prop.getProperty("DataProviderExcel"), prop.getProperty("ExpectedResultSheet"), 27, 1));
+	} catch (IOException e) {
+		System.out.println("Exception handled " + e);
+	}
   }
   
   
   @Test(groups="Functional", retryAnalyzer = RetryUtils.class)
-  public void verifyTheStatusOfDeliveryBoy() throws IOException {
+  public void verifyTheStatusOfDeliveryBoy() {
 	  lp=new LoginPage(driver);
-	  lp.enterUsername(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 0));
-	  lp.enterPassword(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 1));
+	  try {
+		lp.enterUsername(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 0));
+		lp.enterPassword(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 1));
+	} catch (IOException e) {
+		System.out.println("Exception handled " + e);
+	}
 	  lp.clickSignIn();
 	  dp=new DashboardPage(driver);
 	  dp.clickManageDeliveryBoy();
 	  md=new ManageDeliveryBoyPage(driver);
 	  String actualResult=md.getStatus(Constant.DELIVERYBOYNAME);
-	  String expectedResult=Constant.STATUSINACTIVE;
-	  Assert.assertEquals(actualResult, expectedResult, Constant.EXPECTEDTEXTERROR);
+	  try {
+	  String expectedResult=er.readStringData(prop.getProperty("DataProviderExcel"), prop.getProperty("ExpectedResultSheet"), 28, 1);
+		Assert.assertEquals(actualResult, expectedResult, er.readStringData(prop.getProperty("DataProviderExcel"), prop.getProperty("ExpectedResultSheet"), 26, 1));
+	} catch (IOException e) {
+		System.out.println("Exception handled " + e);
+	}
   }
   
 }

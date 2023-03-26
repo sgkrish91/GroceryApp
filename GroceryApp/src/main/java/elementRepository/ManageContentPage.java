@@ -10,14 +10,14 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import utilities.ExplicitWait;
+import utilities.WaitUtility;
 import utilities.GeneralUtilities;
 
 public class ManageContentPage {
 	
 	WebDriver driver;
 	GeneralUtilities gu=new GeneralUtilities();
-	ExplicitWait ew=new ExplicitWait();
+	WaitUtility ew=new WaitUtility();
 	
 	public ManageContentPage(WebDriver driver) {
 		this.driver=driver;
@@ -42,7 +42,7 @@ public class ManageContentPage {
 		index=gu.getTableLocatorValue(listPagesTable, "SampleData");
 		locator="//table[@class='table table-bordered table-hover table-sm']//tbody//tr["+(index+1)+"]//td[5]//a[1]";
 		WebElement edit=driver.findElement(By.xpath(locator));
-		edit.click();
+		gu.clickAButton(edit);
 	}
 	
 	public void editPageDetails() {
@@ -50,14 +50,7 @@ public class ManageContentPage {
 	}
 	
 	public void clickUpdate() {
-		ew.elementToBeClickableExplicitWait(driver, update);
-		Actions actions=new Actions(driver);
-		JavascriptExecutor js = (JavascriptExecutor) driver;		//We use the Javascript interface to perform actions.
-		js.executeScript("window.scrollBy(0,3000)");
-		js.executeScript("arguments[0].click();", update);		//To perform click action
-
-		//actions.moveToElement(update).click().build().perform();
-		//update.click();
+		gu.clickElementUsingJavascript(driver, update);
 	}
 	
 	public boolean getTextOfAlert(String text) {
@@ -70,7 +63,7 @@ public class ManageContentPage {
 		index=gu.getTableLocatorValue(listPagesTable, "SampleData");
 		locator="//table[@class='table table-bordered table-hover table-sm']//tbody//tr["+(index+1)+"]//td[4]";
 		WebElement updatedPage=driver.findElement(By.xpath(locator));
-		return updatedPage.getText();
+		return gu.getElementText(updatedPage);
 	}
 
 }

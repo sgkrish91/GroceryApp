@@ -40,19 +40,19 @@ public class ManageDeliveryBoyPage {
 	}
 	
 	public void clickSearch() {
-		search.click();
+		gu.clickAButton(search);
 	}
 	
 	public void enterUsername(String name) {
-		username.sendKeys(name);
+		gu.enterTextInElement(username, name);
 	}
 	
 	public void clickReset() {
-		reset.click();
+		gu.clickAButton(reset);
 	}
 	
 	public boolean presenceOfUsername() {
-		return username.isDisplayed();
+		return gu.checkIfElementIsDisplayed(username);
 	}
 	
 	public String getStatus(String name) {

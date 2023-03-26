@@ -6,14 +6,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import utilities.ExplicitWait;
+import utilities.WaitUtility;
 import utilities.GeneralUtilities;
 
 public class DashboardPage {
 	
 	WebDriver driver;
 	GeneralUtilities gu=new GeneralUtilities();
-	ExplicitWait ew=new ExplicitWait();
+	WaitUtility ew=new WaitUtility();
 	
 	public DashboardPage(WebDriver driver) {
 		this.driver=driver;
@@ -82,19 +82,19 @@ public class DashboardPage {
 	
 	public void clickAdmin() {
 		ew.presenceOfElementExplicitWait(driver, "//a[@data-toggle='dropdown']");
-		admin.click();
+		gu.clickAButton(admin);
 	}
 	
 	public void clickLogout() {
-		logout.click();
+		gu.clickAButton(logout);
 	}
 	
 	public void clickManageExpense() {
-		manageExpense.click();
+		gu.clickAButton(manageExpense);
 	}
 	
 	public void clickExpenseCategory() {
-		expCategory.click();
+		gu.clickAButton(expCategory);
 	}
 	
 	public String getTitleOfExpCategory() {
@@ -102,55 +102,51 @@ public class DashboardPage {
 	}
 	
 	public void clickManageProduct() {
-		manageProduct.click();
+		gu.clickAButton(manageProduct);
 	}
 	
 	public void clickAdminUsers() {
-		
-		adminUsers.click();
+		gu.clickAButton(adminUsers);
 	}
 	
 	public void clickManageContent() {
-		manageContent.click();
+		gu.clickAButton(manageContent);
 	}
 	
 	public void clickManageCategory() {
-		manageCategory.click();
+		gu.clickAButton(manageCategory);
 	}
 	
 	public void clickSubCategory() {
-		subCategory.click();
+		gu.clickAButton(subCategory);
 	}
 	
 	public void clickManagePaymentMethod() {
-		managePaymentMethod.click();
+		gu.clickAButton(managePaymentMethod);
 	}
 	
 	public void clickMobileSlider() {
-		mobileSlider.click();
+		gu.clickAButton(mobileSlider);
 	}
 	
 	public void clickManageLocation() {
-		manageLocation.click();
+		gu.clickAButton(manageLocation);
 	}
 	
 	public void clickManagePages() {
-		managePages.click();
+		gu.clickAButton(managePages);
 	}
 	
 	public void clickManageFooter() {
-		JavascriptExecutor js = (JavascriptExecutor) driver;		//We use the Javascript interface to perform actions.
-		js.executeScript("window.scrollBy(0,3000)");
-		js.executeScript("arguments[0].click();", manageFooter);
-		//manageFooter.click();
+		gu.clickElementUsingJavascript(driver, manageFooter);
 	}
 	
 	public void clickPushNotification() {
-		pushNot.click();
+		gu.clickAButton(pushNot);
 	}
 	
 	public void clickManageDeliveryBoy() {
-		manageDeliveryBoy.click();
+		gu.clickAButton(manageDeliveryBoy);
 	}
 	
 	public String getManageDeliveryBoyTitle() {

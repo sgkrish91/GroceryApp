@@ -19,13 +19,19 @@ import org.testng.Assert;
 public class LoginPageTestCases extends BaseClass {//inheritance. We add the BeforeMethod and AfterMethod inside another class BaseClass and extend the same here.
 	
 	LoginPage lp;
+	ExcelRead er=new ExcelRead();
 	
   @Test(groups="Sanity", retryAnalyzer = RetryUtils.class)
   public void verifyTheTextOfSignInButton() {
 	  lp=new LoginPage(driver);
 	  String actualResult=lp.getTextOfSignInButton();
-	  String expectedResult=Constant.SIGNINTEXT;
-	  Assert.assertEquals(actualResult, expectedResult, Constant.SIGNINBUTTONERROR);
+	  String expectedResult;
+	try {
+		expectedResult = er.readStringData(prop.getProperty("DataProviderExcel"), prop.getProperty("ExpectedResultSheet"), 10, 1);
+	  Assert.assertEquals(actualResult, expectedResult, er.readStringData(prop.getProperty("DataProviderExcel"), prop.getProperty("ExpectedResultSheet"), 11, 1));
+	} catch (IOException e) {
+		System.out.println("Exception handled " + e);
+	}
   }
   
   @Test(groups="Sanity", retryAnalyzer = RetryUtils.class)
@@ -33,21 +39,32 @@ public class LoginPageTestCases extends BaseClass {//inheritance. We add the Bef
 	  lp=new LoginPage(driver);
 	  boolean actualResult=lp.isRemembermeSelected();
 	  boolean expectedResult=false;
-	  Assert.assertEquals(actualResult, expectedResult, Constant.CHECKBOXERROR);
+	  try {
+		Assert.assertEquals(actualResult, expectedResult, er.readStringData(prop.getProperty("DataProviderExcel"), prop.getProperty("ExpectedResultSheet"), 12, 1));
+	} catch (IOException e) {
+		System.out.println("Exception handled " + e);
+	}
   }
   
   @Test(groups="Regression", retryAnalyzer = RetryUtils.class)
-  public void verifyUserIsAbleToLoginWithValidCredentials() throws IOException {
-	  testBasic();
+  public void verifyUserIsAbleToLoginWithValidCredentials() {
 	  lp=new LoginPage(driver);
-	  lp.enterUsername(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 0));
-	  lp.enterPassword(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 0));
+	  try {
+		lp.enterUsername(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 0));
+		lp.enterPassword(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 0));
+	} catch (IOException e) {
+		System.out.println("Exception handled " + e);
+	}
 	  lp.clickSignIn();
 	  String actualResult=lp.URLAfterSignIn();
 	  String expectedResult=prop.getProperty("SignInURL");
-	  Assert.assertEquals(actualResult, expectedResult, Constant.LOGINERROR);
+	  try {
+		Assert.assertEquals(actualResult, expectedResult, er.readStringData(prop.getProperty("DataProviderExcel"), prop.getProperty("ExpectedResultSheet"), 13, 1));
 	  boolean actualResult1=lp.isAdminDisplayed();
-	  Assert.assertTrue(actualResult1, Constant.LOGINERROR);
+	  Assert.assertTrue(actualResult1, er.readStringData(prop.getProperty("DataProviderExcel"), prop.getProperty("ExpectedResultSheet"), 13, 1));
+	  } catch (IOException e) {
+		  System.out.println("Exception handled " + e);
+		}
   }
   
   @Test(dataProvider ="dataProvider",dataProviderClass = DataProviderUtility.class, groups="Regression", retryAnalyzer = RetryUtils.class)
@@ -56,24 +73,38 @@ public class LoginPageTestCases extends BaseClass {//inheritance. We add the Bef
 	  lp.enterUsername(user);
 	  lp.enterPassword(pass);
 	  lp.clickSignIn();
-	  boolean actualResult=lp.getErrorMessage(Constant.INVALIDUSERNAMEALERT);
-	  Assert.assertTrue(actualResult, Constant.ALERTERROR);
+	  try {
+	  boolean actualResult=lp.getErrorMessage(er.readStringData(prop.getProperty("DataProviderExcel"), prop.getProperty("ExpectedResultSheet"), 14, 1));
+		Assert.assertTrue(actualResult, er.readStringData(prop.getProperty("DataProviderExcel"), prop.getProperty("ExpectedResultSheet"), 3, 1));
+	} catch (IOException e) {
+		System.out.println("Exception handled " + e);
+	}
   }
   
   @Test(groups="Sanity", retryAnalyzer = RetryUtils.class)
   public void verifyTheTextOfLoginPageTitle() {
 	  lp=new LoginPage(driver);
 	  String actualResult=lp.textOfTitle();
-	  String expectedResult=Constant.LOGINTITLETEXT;
-	  Assert.assertEquals(actualResult, expectedResult, Constant.LOGINTITLE);
+	  String expectedResult;
+	try {
+		expectedResult = er.readStringData(prop.getProperty("DataProviderExcel"), prop.getProperty("ExpectedResultSheet"), 6, 1);
+	  Assert.assertEquals(actualResult, expectedResult, er.readStringData(prop.getProperty("DataProviderExcel"), prop.getProperty("ExpectedResultSheet"), 15, 1));
+	} catch (IOException e) {
+		System.out.println("Exception handled " + e);
+	}
   }
   
   @Test(groups="Sanity", retryAnalyzer = RetryUtils.class)
   public void verifyTheBackgroundColorOfSignInButton() {
 	  lp=new LoginPage(driver);
 	  String actualResult=lp.getSignInBackgroundColor();
-	  String expectedResult=Constant.SIGNINBGCOLOR;
-	  Assert.assertEquals(actualResult, expectedResult, Constant.BACKGROUNDCOLORERROR);
+	  String expectedResult;
+	try {
+		expectedResult = er.readStringData(prop.getProperty("DataProviderExcel"), prop.getProperty("ExpectedResultSheet"), 16, 1);
+	  Assert.assertEquals(actualResult, expectedResult, er.readStringData(prop.getProperty("DataProviderExcel"), prop.getProperty("ExpectedResultSheet"), 17, 1));
+	} catch (IOException e) {
+		System.out.println("Exception handled " + e);
+	}
   }
   
   @Test(groups="Sanity", retryAnalyzer = RetryUtils.class)
@@ -81,15 +112,24 @@ public class LoginPageTestCases extends BaseClass {//inheritance. We add the Bef
 	  lp=new LoginPage(driver);
 	  lp.clickSignIn();
 	  boolean actualResult=lp.isUsernameEnabled();
-	  Assert.assertTrue(actualResult, Constant.USERNAMEERROR);
+	  try {
+		Assert.assertTrue(actualResult, er.readStringData(prop.getProperty("DataProviderExcel"), prop.getProperty("ExpectedResultSheet"), 18, 1));
+	} catch (IOException e) {
+		System.out.println("Exception handled " + e);
+	}
   }
   
   @Test(groups="Functional", retryAnalyzer = RetryUtils.class)
   public void verifyTheTextOfRememberMeLogin() {
 	  lp=new LoginPage(driver);
 	  String actualResult=lp.getTextOfRememberMeLabel();
-	  String expectedResult=Constant.REMEMBERMELABEL;
-	  Assert.assertEquals(actualResult, expectedResult, Constant.ALERTEXPECTEDRESULT);
+	  String expectedResult;
+	try {
+		expectedResult = er.readStringData(prop.getProperty("DataProviderExcel"), prop.getProperty("ExpectedResultSheet"), 19, 1);
+	  Assert.assertEquals(actualResult, expectedResult, prop.getProperty("AlertExpectedResult"));
+	} catch (IOException e) {
+		System.out.println("Exception handled " + e);
+	}
   }
 
 }

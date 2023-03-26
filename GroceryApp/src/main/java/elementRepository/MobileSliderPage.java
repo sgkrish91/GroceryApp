@@ -39,7 +39,7 @@ public class MobileSliderPage {
 	private WebElement delete;
 	
 	public void clickNew() {
-		newButton.click();
+		gu.clickAButton(newButton);
 	}
 	
 	public void uploadImage(String location) throws AWTException {
@@ -47,7 +47,7 @@ public class MobileSliderPage {
 	}
 	
 	public void clickSave() {
-		save.click();
+		gu.clickAButton(save);
 	}
 	
 	public boolean getAlertText(String text) {
@@ -55,11 +55,11 @@ public class MobileSliderPage {
 	}
 	
 	public boolean presenceOfImage() {
-		return image.isDisplayed();
+		return gu.checkIfElementIsDisplayed(image);
 	}
 	
 	public void clickDelete() {
-		delete.click();
+		gu.clickAButton(delete);
 	}
 	
 	public String getTextOfDeleteAlert() {

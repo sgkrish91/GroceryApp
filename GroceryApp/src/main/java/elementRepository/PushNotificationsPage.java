@@ -33,19 +33,19 @@ public class PushNotificationsPage {
 	private WebElement alert;
 	
 	public void enterTitle() {
-		title.sendKeys("Hello");
+		gu.enterTextInElement(title, "Hello");
 	}
 	
 	public void enterDescription() {
-		description.sendKeys("Stocks are updated");
+		gu.enterTextInElement(description, "Stocks are updated");
 	}
 	
 	public void clickSend() {
-		send.click();
+		gu.clickAButton(send);
 	}
 	
 	public void clickReset() {
-		reset.click();
+		gu.clickAButton(reset);
 	}
 	
 	public boolean getAlertText(String text) {
@@ -57,4 +57,3 @@ public class PushNotificationsPage {
 	}
 
 }
-//Test

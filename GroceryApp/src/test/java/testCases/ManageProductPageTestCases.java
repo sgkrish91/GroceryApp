@@ -2,6 +2,7 @@ package testCases;
 
 import static org.testng.Assert.assertEquals;
 
+import java.io.IOException;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
@@ -14,6 +15,7 @@ import constant.Constant;
 import elementRepository.DashboardPage;
 import elementRepository.LoginPage;
 import elementRepository.ManageProductPage;
+import utilities.ExcelRead;
 import utilities.RetryUtils;
 
 public class ManageProductPageTestCases extends BaseClass{
@@ -21,10 +23,10 @@ public class ManageProductPageTestCases extends BaseClass{
 	LoginPage lp;
 	DashboardPage dp;
 	ManageProductPage mp;
+	ExcelRead er=new ExcelRead();
 	
   @Test(groups="Functional")
   public void verifyWhetherProductsListedAreMatchingTheSearchCriteriaCategoryAndSubcategory() {
-	  
 	  lp=new LoginPage(driver);
 	  lp.enterUsername(Constant.LOGINUSER);
 	  lp.enterPassword(Constant.LOGINPASSWORD);
@@ -37,7 +39,11 @@ public class ManageProductPageTestCases extends BaseClass{
 	  mp.selectSubCategory();
 	  mp.clickSearchInList();
 	  boolean actualResult=mp.verifyCategoryInTable();
-	  Assert.assertTrue(actualResult, Constant.LISTPRODUCTCATEGORYERROR);
+	  try {
+		Assert.assertTrue(actualResult, er.readStringData(prop.getProperty("DataProviderExcel"), prop.getProperty("ExpectedResultSheet"), 32, 1));
+	} catch (IOException e) {
+		System.out.println("Exception handled " + e);
+	}
 	  
   }
   

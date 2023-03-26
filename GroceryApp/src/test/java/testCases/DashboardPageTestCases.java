@@ -16,75 +16,104 @@ public class DashboardPageTestCases extends BaseClass{
 	
 	LoginPage lp;
 	DashboardPage dp;
+	ExcelRead er=new ExcelRead();
 	
   @Test(groups="Sanity", retryAnalyzer = RetryUtils.class)
-  public void verifyFunctionalityOfLogoutButton() throws IOException {
-	  testBasic();
+  public void verifyFunctionalityOfLogoutButton() {
 	  lp=new LoginPage(driver);
-	  lp.enterUsername(ExcelRead.readStringData(prop.getProperty("LoginExcel"), "Sheet1", 1, 0));
-	  lp.enterPassword(ExcelRead.readStringData(prop.getProperty("LoginExcel"), "Sheet1", 1, 1));
+	  try {
+		lp.enterUsername(ExcelRead.readStringData(prop.getProperty("LoginExcel"), "Sheet1", 1, 0));
+		lp.enterPassword(ExcelRead.readStringData(prop.getProperty("LoginExcel"), "Sheet1", 1, 1));
+	} catch (IOException e) {
+		System.out.println("Exception handled " + e);
+	}
 	  lp.clickSignIn();
 	  dp=new DashboardPage(driver);
 	  dp.clickAdmin();
 	  dp.clickLogout();
 	  String actualResult=lp.URLAfterSignIn();
 	  String expectedResult=prop.getProperty("BaseURL");
-	  Assert.assertEquals(actualResult, expectedResult, Constant.PAGELOADERROR);
+	  try {
+		Assert.assertEquals(actualResult, expectedResult, er.readStringData(prop.getProperty("DataProviderExcel"), prop.getProperty("ExpectedResultSheet"), 5, 1));
+	
 	  String actualResult1=lp.textOfTitle();
-	  String expectedResult1=Constant.LOGINTITLETEXT;
-	  Assert.assertEquals(actualResult1, expectedResult1, Constant.PAGELOADERROR);
+	  String expectedResult1=er.readStringData(prop.getProperty("DataProviderExcel"), prop.getProperty("ExpectedResultSheet"), 6, 1);
+	  Assert.assertEquals(actualResult1, expectedResult1, er.readStringData(prop.getProperty("DataProviderExcel"), prop.getProperty("ExpectedResultSheet"), 5, 1));
+	} catch (IOException e) {
+		System.out.println("Exception handled " + e);
+		}
   }
   
   @Test(groups="Regression", retryAnalyzer = RetryUtils.class)
-  public void verifyWhetherUserIsAbleToAccessExpenseCategoryPage() throws IOException {
-	  testBasic();
-	  
+  public void verifyWhetherUserIsAbleToAccessExpenseCategoryPage() {
 	  lp=new LoginPage(driver);
-	  lp.enterUsername(ExcelRead.readStringData(prop.getProperty("LoginExcel"), "Sheet1", 1, 0));
-	  lp.enterPassword(ExcelRead.readStringData(prop.getProperty("LoginExcel"), "Sheet1", 1, 1));
+	  try {
+		lp.enterUsername(ExcelRead.readStringData(prop.getProperty("LoginExcel"), "Sheet1", 1, 0));
+		lp.enterPassword(ExcelRead.readStringData(prop.getProperty("LoginExcel"), "Sheet1", 1, 1));
+	} catch (IOException e) {
+		System.out.println("Exception handled " + e);
+	}
 	  lp.clickSignIn();
 	  dp=new DashboardPage(driver);
 	  dp.clickManageExpense();
 	  dp.clickExpenseCategory();
 	  String actualResult=lp.URLAfterSignIn();
 	  String expectedResult=prop.getProperty("ExpenseCategoryURL");
-	  Assert.assertEquals(actualResult, expectedResult, Constant.PAGELOADERROR);
+	  try {
+		Assert.assertEquals(actualResult, expectedResult, er.readStringData(prop.getProperty("DataProviderExcel"), prop.getProperty("ExpectedResultSheet"), 5, 1));
 	  String actualResult1=dp.getTitleOfExpCategory();
-	  String expectedResult1=Constant.EXPENSECATTITLE;
-	  Assert.assertEquals(actualResult1, expectedResult1, Constant.PAGELOADERROR);
+	  String expectedResult1=er.readStringData(prop.getProperty("DataProviderExcel"), prop.getProperty("ExpectedResultSheet"), 7, 1);
+	  Assert.assertEquals(actualResult1, expectedResult1, er.readStringData(prop.getProperty("DataProviderExcel"), prop.getProperty("ExpectedResultSheet"), 5, 1));
+	  } catch (IOException e) {
+		  System.out.println("Exception handled " + e);
+		}
   }
   
   @Test(groups="Functional", retryAnalyzer = RetryUtils.class)
-  public void verifyWhetherUserIsAbleToNavigateToManageDeliveryBoyPage() throws IOException {
-	  testBasic();
+  public void verifyWhetherUserIsAbleToNavigateToManageDeliveryBoyPage() {
 	  lp=new LoginPage(driver);
-	  lp.enterUsername(ExcelRead.readStringData(prop.getProperty("LoginExcel"), "Sheet1", 1, 0));
-	  lp.enterPassword(ExcelRead.readStringData(prop.getProperty("LoginExcel"), "Sheet1", 1, 1));
+	  try {
+		lp.enterUsername(ExcelRead.readStringData(prop.getProperty("LoginExcel"), "Sheet1", 1, 0));
+		lp.enterPassword(ExcelRead.readStringData(prop.getProperty("LoginExcel"), "Sheet1", 1, 1));
+	} catch (IOException e) {
+		System.out.println("Exception handled " + e);
+	}
 	  lp.clickSignIn();
 	  dp=new DashboardPage(driver);
 	  dp.clickManageDeliveryBoy();
 	  String actualResult=lp.URLAfterSignIn();
 	  String expectedResult=prop.getProperty("ManageDeliveryBoyURL");
-	  Assert.assertEquals(actualResult, expectedResult, Constant.PAGELOADERROR);
+	  try {
+		Assert.assertEquals(actualResult, expectedResult, er.readStringData(prop.getProperty("DataProviderExcel"), prop.getProperty("ExpectedResultSheet"), 5, 1));
 	  String actualResult1=dp.getManageDeliveryBoyTitle();
-	  String expectedResult1=Constant.MANAGEDELIVERYBOYTITLE;
-	  Assert.assertEquals(actualResult1, expectedResult1, Constant.PAGELOADERROR);
+	  String expectedResult1=er.readStringData(prop.getProperty("DataProviderExcel"), prop.getProperty("ExpectedResultSheet"), 8, 1);
+	  Assert.assertEquals(actualResult1, expectedResult1, er.readStringData(prop.getProperty("DataProviderExcel"), prop.getProperty("ExpectedResultSheet"), 5, 1));
+	  } catch (IOException e) {
+		  System.out.println("Exception handled " + e);
+		}
   }
   
   @Test(groups="Functional", retryAnalyzer = RetryUtils.class)
-  public void verifyWhetherUserIsAbleToNavigateToMobileSliderPage() throws IOException {
-	  testBasic();
+  public void verifyWhetherUserIsAbleToNavigateToMobileSliderPage()  {
 	  lp=new LoginPage(driver);
-	  lp.enterUsername(ExcelRead.readStringData(prop.getProperty("LoginExcel"), "Sheet1", 1, 0));
-	  lp.enterPassword(ExcelRead.readStringData(prop.getProperty("LoginExcel"), "Sheet1", 1, 1));
+	  try {
+		lp.enterUsername(ExcelRead.readStringData(prop.getProperty("LoginExcel"), "Sheet1", 1, 0));
+		lp.enterPassword(ExcelRead.readStringData(prop.getProperty("LoginExcel"), "Sheet1", 1, 1));
+	} catch (IOException e) {
+		System.out.println("Exception handled " + e);
+	}
 	  lp.clickSignIn();
 	  dp=new DashboardPage(driver);
 	  dp.clickMobileSlider();
 	  String actualResult=lp.URLAfterSignIn();
 	  String expectedResult=prop.getProperty("MobileSliderURL");
-	  Assert.assertEquals(actualResult, expectedResult, Constant.PAGELOADERROR);
+	  try {
+		Assert.assertEquals(actualResult, expectedResult, er.readStringData(prop.getProperty("DataProviderExcel"), prop.getProperty("ExpectedResultSheet"), 5, 1));
 	  String actualResult1=dp.getMobileSliderTitle();
-	  String expectedResult1=Constant.MOBILESLIDERTITLE;
-	  Assert.assertEquals(actualResult1, expectedResult1, Constant.PAGELOADERROR);
+	  String expectedResult1=er.readStringData(prop.getProperty("DataProviderExcel"), prop.getProperty("ExpectedResultSheet"), 9, 1);
+	  Assert.assertEquals(actualResult1, expectedResult1, er.readStringData(prop.getProperty("DataProviderExcel"), prop.getProperty("ExpectedResultSheet"), 5, 1));
+	  } catch (IOException e) {
+		  System.out.println("Exception handled " + e);
+		}
   }
 }

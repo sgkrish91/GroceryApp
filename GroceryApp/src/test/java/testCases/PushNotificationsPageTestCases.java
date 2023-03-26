@@ -17,13 +17,17 @@ public class PushNotificationsPageTestCases extends BaseClass{
 	LoginPage lp;
 	DashboardPage dp;
 	PushNotificationsPage pn;
+	ExcelRead er=new ExcelRead();
 	
   @Test(groups="Regression", retryAnalyzer = RetryUtils.class)
-  public void verifyWhetherUserIsAbleToSendPushNotifications() throws IOException {
-	  testBasic();
+  public void verifyWhetherUserIsAbleToSendPushNotifications() {
 	  lp=new LoginPage(driver);
-	  lp.enterUsername(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 0));
-	  lp.enterPassword(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 1));
+	  try {
+		lp.enterUsername(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 0));
+		lp.enterPassword(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 1));
+	} catch (IOException e) {
+		System.out.println("Exception handled " + e);
+	}
 	  lp.clickSignIn();
 	  dp=new DashboardPage(driver);
 	  dp.clickPushNotification();
@@ -31,16 +35,23 @@ public class PushNotificationsPageTestCases extends BaseClass{
 	  pn.enterTitle();
 	  pn.enterDescription();
 	  pn.clickSend();
-	  boolean actualResult=pn.getAlertText(Constant.PUSHNOTIFICATIONALERT);
-	  Assert.assertTrue(actualResult, Constant.ALERTERROR);
+	  try {
+	  boolean actualResult=pn.getAlertText(er.readStringData(prop.getProperty("DataProviderExcel"), prop.getProperty("ExpectedResultSheet"), 35, 1));
+	  Assert.assertTrue(actualResult, er.readStringData(prop.getProperty("DataProviderExcel"), prop.getProperty("ExpectedResultSheet"), 3, 1));
+	} catch (IOException e) {
+		System.out.println("Exception handled " + e);
+	}
   }
   
   @Test(groups="Sanity", retryAnalyzer = RetryUtils.class)
-  public void verifyWhetherUserIsAbleToClearTheDataEnteredInTitleTextboxWhileClickingResetButton() throws IOException {
-	  testBasic();
+  public void verifyWhetherUserIsAbleToClearTheDataEnteredInTitleTextboxWhileClickingResetButton() {
 	  lp=new LoginPage(driver);
-	  lp.enterUsername(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 0));
-	  lp.enterPassword(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 1));
+	  try {
+		lp.enterUsername(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 0));
+		lp.enterPassword(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 1));
+	} catch (IOException e) {
+		System.out.println("Exception handled " + e);
+	}
 	  lp.clickSignIn();
 	  dp=new DashboardPage(driver);
 	  dp.clickPushNotification();
@@ -48,7 +59,11 @@ public class PushNotificationsPageTestCases extends BaseClass{
 	  pn.enterTitle();
 	  pn.clickReset();
 	  String actualResult=pn.getTextOfTitle();
+	  try {
 	  String expectedResult=Constant.EMPTYSTRING;
-	  Assert.assertEquals(actualResult, expectedResult, Constant.EXPECTEDTEXTERROR);
+		Assert.assertEquals(actualResult, expectedResult, er.readStringData(prop.getProperty("DataProviderExcel"), prop.getProperty("ExpectedResultSheet"), 27, 1));
+	} catch (IOException e) {
+		System.out.println("Exception handled " + e);
+	}
   }
 }

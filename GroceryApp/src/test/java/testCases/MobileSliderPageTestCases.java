@@ -18,41 +18,63 @@ public class MobileSliderPageTestCases extends BaseClass {
 	LoginPage lp;
 	DashboardPage dp;
 	MobileSliderPage ms;
+	ExcelRead er=new ExcelRead();
 	
   @Test(groups="Functional", retryAnalyzer = RetryUtils.class)
-  public void verifyWhetherUserIsAbleToAddNewImage() throws IOException, AWTException {
-	  testBasic();
+  public void verifyWhetherUserIsAbleToAddNewImage() {
 	  lp=new LoginPage(driver);
-	  lp.enterUsername(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 0));
-	  lp.enterPassword(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 1));
+	  try {
+		lp.enterUsername(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 0));
+		lp.enterPassword(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 1));
+	} catch (IOException e) {
+		System.out.println("Exception handled " + e);
+	}
 	  lp.clickSignIn();
 	  dp=new DashboardPage(driver);
 	  dp.clickMobileSlider();
 	  ms=new MobileSliderPage(driver);
 	  ms.clickNew();
-	  ms.uploadImage(Constant.UPLOADIMAGE);
+	  try {
+		ms.uploadImage(Constant.UPLOADIMAGE);
+	} catch (AWTException e) {
+		System.out.println("Exception handled " + e);
+	}
 	  ms.clickSave();
-	  boolean actualResult=ms.getAlertText(Constant.MOBILESLIDERALERT);
-	  Assert.assertTrue(actualResult, Constant.ALERTERROR);
+	  try {
+	  boolean actualResult=ms.getAlertText(er.readStringData(prop.getProperty("DataProviderExcel"), prop.getProperty("ExpectedResultSheet"), 33, 1));
+	  Assert.assertTrue(actualResult, er.readStringData(prop.getProperty("DataProviderExcel"), prop.getProperty("ExpectedResultSheet"), 3, 1));
+	} catch (IOException e) {
+		System.out.println("Exception handled " + e);
+	}
 	  dp.clickMobileSlider();
 	  boolean actualResult1=ms.presenceOfImage();
-	  Assert.assertTrue(actualResult1, Constant.ELEMENTPRESENCEERROR);
-	  
+	  try {
+		Assert.assertTrue(actualResult1, er.readStringData(prop.getProperty("DataProviderExcel"), prop.getProperty("ExpectedResultSheet"), 27, 1));
+	} catch (IOException e) {
+		System.out.println("Exception handled " + e);
+	}
   }
   
   @Test(groups="Functional", retryAnalyzer = RetryUtils.class)
-  public void verifyTheAlertTextWhileClickingDeleteButtonInMobileSliderPage() throws IOException {
-	  testBasic();
+  public void verifyTheAlertTextWhileClickingDeleteButtonInMobileSliderPage() {
 	  lp=new LoginPage(driver);
-	  lp.enterUsername(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 0));
-	  lp.enterPassword(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 1));
+	  try {
+		lp.enterUsername(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 0));
+		lp.enterPassword(ExcelRead.readStringData(prop.getProperty("LoginExcel"), prop.getProperty("LoginExcelSheet"), 1, 1));
+	} catch (IOException e) {
+		System.out.println("Exception handled " + e);
+	}
 	  lp.clickSignIn();
 	  dp=new DashboardPage(driver);
 	  dp.clickMobileSlider();
 	  ms=new MobileSliderPage(driver);
 	  ms.clickDelete();
 	  String actualResult=ms.getTextOfDeleteAlert();
-	  String expectedResult=Constant.MOBILESLIDERDELETEALERT;
-	  Assert.assertEquals(actualResult, expectedResult, Constant.ALERTERROR);
+	  try {
+	  String expectedResult=er.readStringData(prop.getProperty("DataProviderExcel"), prop.getProperty("ExpectedResultSheet"), 34, 1);
+	  Assert.assertEquals(actualResult, expectedResult, er.readStringData(prop.getProperty("DataProviderExcel"), prop.getProperty("ExpectedResultSheet"), 3, 1));
+	} catch (IOException e) {
+		System.out.println("Exception handled " + e);
+	}
   }
 }

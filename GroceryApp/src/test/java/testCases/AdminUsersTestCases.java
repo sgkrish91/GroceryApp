@@ -19,6 +19,8 @@ public class AdminUsersTestCases extends BaseClass {
 	LoginPage lp;
 	DashboardPage dp;
 	AdminUsersPage au;
+	
+	ExcelRead er=new ExcelRead();
 
 	@Test(groups="Functional", retryAnalyzer = RetryUtils.class)
 	public void verifyWhetherAdminUsersTableListsUsersAccordingToSearchCriteria() throws IOException {
@@ -34,8 +36,7 @@ public class AdminUsersTestCases extends BaseClass {
 		au.clickSearchInList();
 		boolean actualResult = au.verifyUserType();
 		boolean expectedResult = true;
-		Assert.assertEquals(actualResult, expectedResult, Constant.TABLESEARCHERROR);
-
+		Assert.assertEquals(actualResult, expectedResult, er.readStringData(prop.getProperty("DataProviderExcel"), prop.getProperty("ExpectedResultSheet"), 1, 1));
 	}
 
 	@Test(groups="Sanity", retryAnalyzer = RetryUtils.class)
@@ -48,9 +49,12 @@ public class AdminUsersTestCases extends BaseClass {
 		dp.clickAdminUsers();
 		au = new AdminUsersPage(driver);
 		String actualResult = au.getLocator();
-		String expectedResult = Constant.STATUSACTIVE;
-		Assert.assertEquals(actualResult, expectedResult, Constant.TABLESEARCHERROR);
-
+		try {
+		String expectedResult = er.readStringData(prop.getProperty("DataProviderExcel"), prop.getProperty("ExpectedResultSheet"), 2, 1);
+			Assert.assertEquals(actualResult, expectedResult, er.readStringData(prop.getProperty("DataProviderExcel"), prop.getProperty("ExpectedResultSheet"), 1, 1));
+		} catch (IOException e) {
+			System.out.println("Exception handled " + e);
+		}
 	}
 
 	@Test(groups="Regression", retryAnalyzer = RetryUtils.class)
@@ -63,8 +67,12 @@ public class AdminUsersTestCases extends BaseClass {
 		dp.clickAdminUsers();
 		au = new AdminUsersPage(driver);
 		au.getLocatorForStatusChange();
-		boolean actualResult = au.getTextOfAlert(Constant.ALERTEXPECTEDRESULT);
-		Assert.assertTrue(actualResult, Constant.ALERTERROR);
+		boolean actualResult = au.getTextOfAlert(prop.getProperty("AlertExpectedResult"));
+		try {
+			Assert.assertTrue(actualResult, er.readStringData(prop.getProperty("DataProviderExcel"), prop.getProperty("ExpectedResultSheet"), 3, 1));
+		} catch (IOException e) {
+			System.out.println("Exception handled " + e);
+		}
 	}
 	
 	@Test(groups="Functional", retryAnalyzer = RetryUtils.class)
@@ -81,8 +89,12 @@ public class AdminUsersTestCases extends BaseClass {
 		au.enterPassword(Constant.RANDOMPASS);
 		au.selectUser();
 		au.clickSave();
-		boolean actualResult=au.getAlertText(Constant.ALERTNEWUSERADDED);
-		Assert.assertTrue(actualResult, Constant.ALERTERROR);
+		try {
+		boolean actualResult=au.getAlertText(er.readStringData(prop.getProperty("DataProviderExcel"), prop.getProperty("ExpectedResultSheet"), 4, 1));
+	    Assert.assertTrue(actualResult, er.readStringData(prop.getProperty("DataProviderExcel"), prop.getProperty("ExpectedResultSheet"), 3, 1));
+		} catch (IOException e) {
+			System.out.println("Exception handled " + e);
+		}
 	}
 
 }
