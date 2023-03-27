@@ -18,6 +18,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import com.github.javafaker.Faker;
+
 import constant.Constant;
 import utilities.ScreenshotUtilities;
 
@@ -40,6 +42,7 @@ public class BaseClass {
 		}
 	}
 	WebDriver driver;
+	Faker faker=new Faker();
 
 	@BeforeMethod(alwaysRun = true)
 	@Parameters("browser")

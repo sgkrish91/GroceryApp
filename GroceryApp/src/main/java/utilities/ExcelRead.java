@@ -18,8 +18,9 @@ public class ExcelRead {
     public static Properties prop;
 	
 	public static void testBasic() throws IOException {
+		ExcelRead er=new ExcelRead();
 		prop=new Properties();		
-		FileInputStream ip=new FileInputStream(System.getProperty("user.dir")+"\\src\\main\\resources\\Config.properties");	
+		FileInputStream ip=new FileInputStream(System.getProperty("user.dir")+er.readStringData(prop.getProperty("DataProviderExcel"), prop.getProperty("DataProviderSheet"), 36, 1));	
 		prop.load(ip);	
 	}
 	

@@ -85,8 +85,8 @@ public class AdminUsersTestCases extends BaseClass {
 		dp.clickAdminUsers();
 		au = new AdminUsersPage(driver);
 		au.clickNew();
-		au.enterUsername(Constant.RANDOMUSER);
-		au.enterPassword(Constant.RANDOMPASS);
+		au.enterUsername(faker.name().username());
+		au.enterPassword(faker.internet().password());
 		au.selectUser();
 		au.clickSave();
 		try {
