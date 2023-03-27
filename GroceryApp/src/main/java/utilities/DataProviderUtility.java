@@ -9,16 +9,14 @@ import org.testng.annotations.DataProvider;
 public class DataProviderUtility {
 	
 	public static Properties prop;
-	ExcelRead er=new ExcelRead();
 	
 	public static void testBasic() throws IOException {
-		ExcelRead er=new ExcelRead();
 		prop=new Properties();		
-		FileInputStream ip=new FileInputStream(System.getProperty("user.dir")+er.readStringData(prop.getProperty("DataProviderExcel"), prop.getProperty("DataProviderSheet"), 36, 1));	
+		FileInputStream ip=new FileInputStream(System.getProperty("user.dir")+"\\src\\main\\resources\\Config.properties");	
 		prop.load(ip);	
 	}
 	
-	
+	ExcelRead er=new ExcelRead();
 
 	@DataProvider(name = "dataProvider")
 	public Object[][] dpMethod() throws IOException {
