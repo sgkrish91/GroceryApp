@@ -35,9 +35,8 @@ public class AdminUsersTestCases extends BaseClass {
 		au.selectUserType();
 		au.clickSearchInList();
 		boolean actualResult = au.verifyUserType();
-		boolean expectedResult = true;
-		Assert.assertEquals(actualResult, expectedResult, er.readStringData(prop.getProperty("DataProviderExcel"), prop.getProperty("ExpectedResultSheet"), 1, 1));
-	}
+		Assert.assertTrue(actualResult, er.readStringData(prop.getProperty("DataProviderExcel"), prop.getProperty("ExpectedResultSheet"), 1, 1));
+		}
 
 	@Test(groups="Sanity", retryAnalyzer = RetryUtils.class)
 	public void verifyTheStatusOfUser() {
