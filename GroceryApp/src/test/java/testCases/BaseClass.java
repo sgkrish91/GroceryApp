@@ -20,7 +20,7 @@ import org.testng.annotations.Test;
 
 import com.github.javafaker.Faker;
 
-import constant.Constant;
+import constantPackage.Constant;
 import utilities.ScreenshotUtilities;
 
 public class BaseClass {

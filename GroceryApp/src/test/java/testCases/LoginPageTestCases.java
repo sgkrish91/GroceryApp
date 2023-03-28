@@ -2,7 +2,7 @@ package testCases;
 
 import org.testng.annotations.Test;
 
-import constant.Constant;
+import constantPackage.Constant;
 import elementRepository.LoginPage;
 import utilities.DataProviderUtility;
 import utilities.ExcelRead;
