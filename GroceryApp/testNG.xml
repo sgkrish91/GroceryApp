@@ -5,7 +5,10 @@
 	<test name="ChromeTest">
 		<parameter name="browser" value="Chrome"></parameter>
 		<classes>
-			<class name="testCases.LoginPageTestCases">
+			<class name="testCases.AdminUsersTestCases">
+				<methods>
+					<include name="verifyWhetherAdminUsersTableListsUsersAccordingToSearchCriteria" />
+				</methods>
 			</class>
 		</classes>
 	</test>

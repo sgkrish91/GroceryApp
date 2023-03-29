@@ -6,19 +6,15 @@
 		<parameter name="browser" value="Chrome"></parameter>
 		<classes>
 			<class name="testCases.AdminUsersTestCases" />
-			<methods>
-				<include name="verifyWhetherAdminUsersTableListsUsersAccordingToSearchCriteria" />
-			</methods>
-			<!-- <class name="testCases.LoginPageTestCases" />
+			<class name="testCases.LoginPageTestCases" />
 			<class name="testCases.DashboardPageTestCases" />
 			<class name="testCases.PushNotificationsPageTestCases" />
 			<class name="testCases.ManagePaymentMethodsTestCases" />
 			<class name="testCases.ManageContentPageTestCases" />
 			<class name="testCases.ManageLocationPageTestCases" />
 			<class name="testCases.MobileSliderPageTestCases" />
-			
 			<class name="testCases.ManageFooterPageTestCases" />
-			<class name="testCases.ManageDeliverBoyPageTestCases" />-->
+			<class name="testCases.ManageDeliverBoyPageTestCases" />
 		</classes>
 	</test>
 </suite>
